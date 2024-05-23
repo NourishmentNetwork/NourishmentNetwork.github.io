@@ -34,8 +34,8 @@ async function load_table(){
 <p class="priceelement">Onions: ${row["Onion Price (lb)"]} per pound</p>
 <p class="priceelement">Tomatoes: ${row["Tomato Price (lb)"]} per pound</p>
 </div></div>`
-        current_row.innerHTML=current_html
-        tableElement.appendChild(current_row)
+        // current_row.innerHTML=current_html
+        tableElement.innerHTML+=current_html
     });
 
     // synchronize scrolling for each div
@@ -48,3 +48,8 @@ async function load_table(){
 }
 
 load_table();
+
+const searchboxes = document.querySelectorAll(".pricetextbox");
+function filter_rows(){
+    const divs = document.querySelectorAll('.row');
+}
