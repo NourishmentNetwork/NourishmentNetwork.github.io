@@ -25,14 +25,14 @@ async function load_table(){
     // add each row
     prices_json.forEach(row => {
         let current_row = document.createElement("div");
-        let current_html = `<div class="row"><h3>${row["Store Name"]}</h3> 
+        let current_html = `<div class="row" data-full="${btoa(JSON.stringify(row))}"><h3>${row["Store Name"]}</h3> 
 <div class="rowdata">
-<p>Bananas: ${row["Banana Price (lb)"]} per pound</p>
-<p>Straberries: ${row["Strawberry Price (oz)"]} per ounce</p>
-<p>Apples: ${row["Apple Price (oz)"]} per ounce</p>
-<p>Potatoes: ${row["Potato Price (lb)"]} per pound</p>
-<p>Onions: ${row["Onion Price (lb)"]} per pound</p>
-<p>Tomatoes: ${row["Tomato Price (lb)"]} per pound</p>
+<p class="priceelement">Bananas: ${row["Banana Price (lb)"]} per pound</p>
+<p class="priceelement">Straberries: ${row["Strawberry Price (oz)"]} per ounce</p>
+<p class="priceelement">Apples: ${row["Apple Price (oz)"]} per ounce</p>
+<p class="priceelement">Potatoes: ${row["Potato Price (lb)"]} per pound</p>
+<p class="priceelement">Onions: ${row["Onion Price (lb)"]} per pound</p>
+<p class="priceelement">Tomatoes: ${row["Tomato Price (lb)"]} per pound</p>
 </div></div>`
         current_row.innerHTML=current_html
         tableElement.appendChild(current_row)

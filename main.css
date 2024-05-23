@@ -30,3 +30,7 @@ body, html{
     white-space: nowrap;
     float: none;
 }
+
+.priceelement{
+    width: 80vw;
+}
