@@ -1,0 +1,32 @@
+body, html{
+    overflow-x: hidden;
+}
+
+#table {
+    display: flex;
+    flex-direction: column;
+    row-gap: 2vh;
+}
+
+.row h3 {
+    display: inline;
+}
+
+.row h3::after{
+    content: "\a";
+    white-space: pre;
+}
+
+.row .rowdata {
+    width: 100vw;
+    white-space: nowrap;
+    overflow-x: scroll;
+    overflow-y: hidden;
+    position: relative;
+}
+
+.row .rowdata *{
+    display: inline-block;
+    white-space: nowrap;
+    float: none;
+}

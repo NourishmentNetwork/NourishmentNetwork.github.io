@@ -20,7 +20,9 @@ print(c)
 # Filter out all rows with no data entered for the banana price
 # Easy way to remove all rows with no data
 c = c[c["Banana Price (lb)"].notnull()]
+# Do it again but with potato prices, to ensure that there is no null data
+c = c[c["Potato Price (lb)"].notnull()]
 print(c)
 
 # Save to csv
-c.to_csv("prices.csv")
+c.to_csv("prices.csv",index=False)
