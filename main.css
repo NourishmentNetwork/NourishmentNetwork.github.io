@@ -1,11 +1,4 @@
-@font-face {
-    font-family: 'Mona Sans';
-    src:
-        url('Mona-Sans.woff2') format('woff2 supports variations'),
-        url('Mona-Sans.woff2') format('woff2-variations');
-    font-weight: 200 900;
-    font-stretch: 75% 125%;
-}
+@import url('https://fonts.googleapis.com/css2?family=Marmelad&display=swap');
 
 :root {
     --background: #e6dbc5;
@@ -17,7 +10,9 @@ body, html{
 }
 
 * {
-    font-family: "Mona Sans",monospace;
+    font-family: "Marmelad", sans-serif;
+    font-weight: 400;
+    font-style: normal;
 }
 
 #header {
@@ -39,10 +34,7 @@ body, html{
 
 .row h3{
     display: inline;
-}
-
-.row h3:not(:first-of-type) {
-    border-bottom: 1px solid black;
+    color: #73A635;
 }
 
 .row h3::after{
@@ -86,11 +78,10 @@ body, html{
 
 #filterbutton {
     border-radius: 4px;
-    border: none;
+    border: 2px solid #4b6b20;
     width: 200px;
     height: 30px;
-    margin-left: 10px;
-    margin-top:5px;
+    /* margin-left: 10px; */
     font-weight: bold;
     background: #d9d9d9;
 }
@@ -104,11 +95,18 @@ body, html{
 }
 
 #footer {
-    position:fixed;
+    position:static;
     bottom:0;
-    height: 120px;
-    background: #E1F4CB;
+    /* height: 120px; */
+    /* background: #E1F4CB; */
     width: 100vw;
     left: 0;
     padding-left: 10px;
+    border-top: 1px solid #4b6b20;
+}
+
+#centerbutton {
+    margin-top:10px;
+    display:flex;
+    justify-content: center;
 }

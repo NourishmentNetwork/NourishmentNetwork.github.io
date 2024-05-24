@@ -9,7 +9,9 @@
 <body>
     <div id="header"><img src="images/logo.webp"></div>
     <p>Each of the rows with the prices are scrollable horizontally.</p>
-    <p>Disclaimer: prices may not be completely up to date</p>
+    <p>To filter for your data, press the APPLY FILTER button</p>
+    <p>Other links:<br><a href="https://linktr.ee/Nourishment.Network">https://linktr.ee/Nourishment.Network</a></p>
+    <!-- <p>Disclaimer: prices may not be completely up to date</p> -->
     <div id="table">
         <div class="row search">
             <label for="storenamesearch"><h3>Store Name</h3></label>
@@ -40,14 +42,14 @@
                     <input name="tomatocost" id="tomatocost" class="pricetextbox">
                 </div>
             </div>
-            <button onclick="filter_rows()" id="filterbutton">APPLY FILTER</button>
+            <div id="centerbutton"><button onclick="filter_rows()" id="filterbutton">APPLY FILTER</button></div>
         </div>
         <!--Rows are added in by javascript-->
     </div>
-
+    
+    <br>
     <div id="footer">
-        <h3>Made by Nourishment Network</h3>
-        <p>Other links:<br><a href="https://linktr.ee/Nourishment.Network">https://linktr.ee/Nourishment.Network</a></p>
+        <h3>2024 by Nourisment Network</h3>
     </div>
 
     <script src="javascript/papaparse.min.js"></script>
