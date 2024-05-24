@@ -156,6 +156,7 @@ async function start_autocomplete(){
                 item.addEventListener("click", e => {
                     inp.value=name; // set value to whatever name it was
                     autocomplete_container.innerHTML=""; // clear the autocomplete
+                    filter_rows(); // filter the rows based on what was selected
                 });
                 autocomplete_container.appendChild(item); // add the item to the autocomplete container
             }

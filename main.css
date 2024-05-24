@@ -125,6 +125,7 @@ body, html{
     height: 30px;
     padding: 0;
     vertical-align: middle;
+    max-width: 90vw;
 }
 
 .autocomplete_item *{
@@ -149,6 +150,7 @@ body, html{
     top:0px;
     background: var(--background);
     z-index: 3;
+    width: 100vw;
 }
 
 .dropdown {
@@ -196,7 +198,7 @@ body, html{
 .search{
     align-self: flex-start;
     position:sticky;
-    top: 85px;
+    top: 83px;
     background: var(--background);
     z-index: 1;
     border-bottom: 2px solid #8BC53F;
