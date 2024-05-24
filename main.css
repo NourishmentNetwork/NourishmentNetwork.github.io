@@ -5,7 +5,7 @@
 }
 
 body, html{
-    overflow-x: hidden;
+    /* overflow-x: hidden; */
     background: var(--background);
 }
 
@@ -144,6 +144,13 @@ body, html{
     background-color: #29ac62;
 }
 
+#stickydropdown{
+    position:sticky;
+    top:0px;
+    background: var(--background);
+    z-index: 3;
+}
+
 .dropdown {
     position: relative;
     display: inline-block;
@@ -158,7 +165,7 @@ body, html{
     background-color: #f1f1f1;
     min-width: 160px;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-    z-index: 1;
+    z-index: 2;
 }
 
 .dropdown-content a {
@@ -184,4 +191,13 @@ body, html{
     transition: opacity 200ms;
     transition-delay: 0s !important;
     pointer-events: auto;
+}
+
+.search{
+    align-self: flex-start;
+    position:sticky;
+    top: 85px;
+    background: var(--background);
+    z-index: 1;
+    border-bottom: 2px solid #8BC53F;
 }
