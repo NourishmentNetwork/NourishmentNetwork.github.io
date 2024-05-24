@@ -1,5 +1,34 @@
+@font-face {
+    font-family: 'Mona Sans';
+    src:
+        url('Mona-Sans.woff2') format('woff2 supports variations'),
+        url('Mona-Sans.woff2') format('woff2-variations');
+    font-weight: 200 900;
+    font-stretch: 75% 125%;
+}
+
+:root {
+    --background: #e6dbc5;
+}
+
 body, html{
     overflow-x: hidden;
+    background: var(--background);
+}
+
+* {
+    font-family: "Mona Sans",monospace;
+}
+
+#header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#header img{
+    height: 40vh;
+    width: auto;
 }
 
 #table {
@@ -10,6 +39,7 @@ body, html{
 
 .row h3 {
     display: inline;
+    border-bottom: 1px solid black;
 }
 
 .row h3::after{
@@ -23,6 +53,10 @@ body, html{
     overflow-x: scroll;
     overflow-y: hidden;
     position: relative;
+    border-top: 1px solid #8BC53F;
+    border-bottom: 1px solid #8BC53F;
+    height: 50px;
+    vertical-align: baseline;
 }
 
 .row .rowdata *{
@@ -32,7 +66,34 @@ body, html{
 }
 
 .priceelement{
-    width: 340px;
+    width: 360px;
+    height: 100%;
+    margin: auto;
+    padding: 15px;
+}
+
+.priceelement label{
+    width: 190px;
+    border-bottom: 1px solid black;
+}
+
+.priceelement input{
+    width: calc(95% - 190px);
+}
+
+#filterbutton {
+    border-radius: 4px;
+    border: none;
+    width: 200px;
+    height: 30px;
+    margin-left: 10px;
+    margin-top:5px;
+    font-weight: bold;
+    background: #d9d9d9;
+}
+
+#filterbutton:active {
+    background: #f0f0f0;    
 }
 
 .hidden {

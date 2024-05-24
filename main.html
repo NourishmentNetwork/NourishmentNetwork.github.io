@@ -7,10 +7,11 @@
     <link rel="stylesheet" href="main.css">
 </head>
 <body>
-    <p>Hello</p>
+    <div id="header"><img src="images/logo.webp"></div>
+    <p>Each of the rows with the prices are scrollable horizontally.</p>
     <div id="table">
         <div class="row search">
-            <label for="storenamesearch">Store Name</label>
+            <label for="storenamesearch"><h3>Store Name</h3></label>
             <input name="storenamesearch" id="storenamesearch">
             <div class="rowdata">
                 <div class="priceelement">
@@ -38,7 +39,7 @@
                     <input name="tomatocost" id="tomatocost" class="pricetextbox">
                 </div>
             </div>
-            <button onclick="filter_rows()">Filter</button>
+            <button onclick="filter_rows()" id="filterbutton">APPLY FILTER</button>
         </div>
         <!--Rows are added in by javascript-->
     </div>
