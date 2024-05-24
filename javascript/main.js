@@ -83,7 +83,9 @@ function filter_rows(){
     price_text_boxes.forEach(text_box =>{
         if (text_box.value != ""){ // skip over empty boxes
             let result = parseFloat(text_box.value); // attempt to convert into a float
-            if (isNaN(result)){ // if the box has invalid inputs
+            if (isNaN(result) || text_box.offsetParent === null){ 
+                // if the box has invalid inputs
+                // or if it is hidden (from the dropdown menu)
                 text_box.value = ""; // clear it
                 prices.push(1000.0) // no price should ever be over 1000, so it is used as a placeholder
             } else {prices.push(result);}
