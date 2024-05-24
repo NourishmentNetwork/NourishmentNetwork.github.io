@@ -25,6 +25,9 @@ async function get_csv(){
 
 var prices_json; // create global variable
 
+// create empty global variable
+var store_names = [];
+
 async function load_table(){
     // load the json into the global variable
     prices_json = await get_csv();
@@ -42,7 +45,8 @@ async function load_table(){
 <p class="priceelement">Tomatoes: $${row["Tomato Price (lb)"]} per pound</p>
 </div></div>`
         // current_row.innerHTML=current_html
-        tableElement.innerHTML+=current_html // append the element to the table
+        tableElement.innerHTML+=current_html; // append the element to the table
+        store_names.push(row["Store Name"]);
     });
 
     // synchronize scrolling for each div
@@ -52,6 +56,8 @@ async function load_table(){
             d.scrollLeft = div.scrollLeft;
         });
     }) );
+
+    await start_autocomplete();
 
 }
 
@@ -73,7 +79,7 @@ function filter_rows(){
         if (text_box.value != ""){ // skip over empty boxes
             let result = parseFloat(text_box.value); // attempt to convert into a float
             if (isNaN(result)){ // if the box has invalid inputs
-                alert("One or more texboxes are invalid!");
+                text_box.value = ""; // clear it
                 prices.push(1000.0) // no price should ever be over 1000, so it is used as a placeholder
             } else {prices.push(result);}
         } else {prices.push(1000.0)} // same as other 1000
@@ -105,4 +111,36 @@ function filter_rows(){
             row.classList.remove("hidden");
         }
     })
+}
+
+async function start_autocomplete(){
+    var inp = document.getElementById("storenamesearch");
+
+    var autocomplete_container = document.getElementById("autocomplete_menu");
+
+    inp.addEventListener("input", (e)=>{
+        autocomplete_container.innerHTML="";
+        
+        var val = inp.value;
+        store_names.forEach(name => {
+            // console.log(name.toLowerCase());
+            if (name.toLowerCase().startsWith(val.toLowerCase())){
+                console.log(name);
+                let item = document.createElement("div");
+                item.classList.add("autocomplete_item");
+                item.innerHTML=`<p>${name}</p>`
+                item.addEventListener("click", e => {
+                    inp.value=name;
+                    autocomplete_container.innerHTML="";
+                });
+                autocomplete_container.appendChild(item);
+            }
+        })
+
+        filter_rows();
+    });
+
+    document.addEventListener("click", function (e) {
+        autocomplete_container.innerHTML="";
+    });
 }

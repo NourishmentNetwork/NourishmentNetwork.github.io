@@ -114,3 +114,19 @@ body, html{
     display:flex;
     justify-content: center;
 }
+
+#autocomplete_menu {
+    max-height: 120px;
+    overflow-y:scroll;
+}
+
+.autocomplete_item {
+    border: 1px solid black;
+    height: 30px;
+    padding: 0;
+    vertical-align: middle;
+}
+
+.autocomplete_item *{
+    margin: 0;
+}
