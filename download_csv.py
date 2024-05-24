@@ -14,7 +14,7 @@ c = c[:-1]
 print(c)
 
 # same thing, but remove last two columns (unececary data)
-c = c.iloc[:, :-2]
+c = c.iloc[:, :-3]
 print(c)
 
 # Filter out all rows with no data entered for the banana price
