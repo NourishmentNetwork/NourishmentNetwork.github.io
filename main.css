@@ -37,8 +37,11 @@ body, html{
     row-gap: 2vh;
 }
 
-.row h3 {
+.row h3{
     display: inline;
+}
+
+.row h3:not(:first-of-type) {
     border-bottom: 1px solid black;
 }
 
@@ -98,4 +101,14 @@ body, html{
 
 .hidden {
     display:none !important;
+}
+
+#footer {
+    position:fixed;
+    bottom:0;
+    height: 120px;
+    background: #E1F4CB;
+    width: 100vw;
+    left: 0;
+    padding-left: 10px;
 }
