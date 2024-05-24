@@ -16,7 +16,7 @@ When the user types in the textbox, the program loops over every store name. If 
 ### Filtering
 First, loop over each textbox for price. If the value entered is valid, add it to a list. If it is invalid or empty, add an arbitrary high number. Any high number ensures that every price will be below it, making that specific filter do nothing. Then, loop over every row. Check the prices stored in the row (stored in the data-full tag), and make any row that has a price higher then what the user entered invisible. Also check if the store name contains what the user inputted for store name.
 
-Then, loop over every cell in the row. If the user selected either fruits or vegetables only, then make any cell that isn't what the user selected invisible.
+Then, loop over every cell in the row. If the user selected either fruits or vegetables only, then make any cell that isn't what the user selected invisible. Also check if it matches the produce the user selected with the checkboxes
 
 ### Loading the table
 First, the csv is downloaded with a custom python script, that saves it from google sheets and crops out unneccecary data.

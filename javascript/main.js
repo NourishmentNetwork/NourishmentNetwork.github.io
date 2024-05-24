@@ -130,6 +130,9 @@ function filter_rows(){
         
         // hide any ones that don't match the producetype
         element.classList.remove("hidden");
+        // if fruits only is selected and the produce type is vegetable
+        // or if vegetables only and the produce type is fruit
+        // or if it is not selected by the user
         if ((producetype === 2 && current_producetype === "vegetable") || (producetype === 3 && current_producetype === "fruit") || !produce_selections[produce_types.indexOf(element.dataset.produce)]){
             element.classList.add("hidden")
         }
@@ -209,13 +212,14 @@ function update_dropdown(number){
         input.checked=true;
     })
 
-    if (producetype === 1){
+    // Hide or show checkboxes based on produce type
+    if (producetype === 1){ // all produce
         fruit_selector.classList.remove("show");
         vegetable_selector.classList.remove("show");
-    } else if (producetype === 2){
+    } else if (producetype === 2){ // fruits only
         fruit_selector.classList.add("show");
         vegetable_selector.classList.remove("show");
-    } else if (producetype === 3){
+    } else if (producetype === 3){ // vegetables only
         fruit_selector.classList.remove("show");
         vegetable_selector.classList.add("show");
     }
