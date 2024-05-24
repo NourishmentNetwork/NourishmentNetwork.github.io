@@ -24,5 +24,12 @@ c = c[c["Banana Price (lb)"].notnull()]
 c = c[c["Potato Price (lb)"].notnull()]
 print(c)
 
+def two_decimals(num):
+    return f"{num:.2f}"
+
+# round all numbers to two decimal places
+for column in ["Banana Price (lb)","Strawberry Price (oz)","Apple Price (oz)","Potato Price (lb)","Onion Price (lb)","Tomato Price (lb)"]:
+    c[column] = c[column].apply(two_decimals)
+
 # Save to csv
 c.to_csv("prices.csv",index=False)

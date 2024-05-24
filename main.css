@@ -32,5 +32,9 @@ body, html{
 }
 
 .priceelement{
-    width: 80vw;
+    width: 340px;
+}
+
+.hidden {
+    display:none !important;
 }
