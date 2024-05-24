@@ -114,32 +114,41 @@ function filter_rows(){
 }
 
 async function start_autocomplete(){
-    var inp = document.getElementById("storenamesearch");
+    var inp = document.getElementById("storenamesearch"); // Load the text input
 
+    // Load the autocomplete container element
     var autocomplete_container = document.getElementById("autocomplete_menu");
 
     inp.addEventListener("input", (e)=>{
+        // clear the container
         autocomplete_container.innerHTML="";
         
-        var val = inp.value;
-        store_names.forEach(name => {
-            // console.log(name.toLowerCase());
-            if (name.toLowerCase().startsWith(val.toLowerCase())){
-                console.log(name);
+        var val = inp.value; // get the inputted value
+
+        store_names.forEach(name => { // loop over every store name
+            if (name.toLowerCase().startsWith(val.toLowerCase())){ // if the store name starts with what the user entered
+                console.log(name); // log it
+
+                // create a div to store it
                 let item = document.createElement("div");
-                item.classList.add("autocomplete_item");
-                item.innerHTML=`<p>${name}</p>`
+                item.classList.add("autocomplete_item"); // add proper classes
+                item.innerHTML=`<p>${name}</p>` // add the text
+
+                // add an event listener
+                // when the option is selected
                 item.addEventListener("click", e => {
-                    inp.value=name;
-                    autocomplete_container.innerHTML="";
+                    inp.value=name; // set value to whatever name it was
+                    autocomplete_container.innerHTML=""; // clear the autocomplete
                 });
-                autocomplete_container.appendChild(item);
+                autocomplete_container.appendChild(item); // add the item to the autocomplete container
             }
         })
 
-        filter_rows();
+        filter_rows(); // refilter the rows
+        // as you type it will automatically change
     });
 
+    // if the user clicks away then remove the autocomplete
     document.addEventListener("click", function (e) {
         autocomplete_container.innerHTML="";
     });
