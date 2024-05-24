@@ -52,6 +52,7 @@ async function load_table(){
             d.scrollLeft = div.scrollLeft;
         });
     }) );
+
 }
 
 load_table(); // run the function

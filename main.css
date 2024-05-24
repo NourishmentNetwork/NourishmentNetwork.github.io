@@ -105,6 +105,10 @@ body, html{
     border-top: 1px solid #4b6b20;
 }
 
+#footer h3 {
+    font-size: 15px;
+}
+
 #centerbutton {
     margin-top:10px;
     display:flex;
