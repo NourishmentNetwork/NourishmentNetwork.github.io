@@ -37,12 +37,12 @@ async function load_table(){
         // use an html template, and fill in the costs and other data
         let current_html = `<div class="row" data-full="${btoa(JSON.stringify(row))}"><h3>${row["Store Name"]}</h3> 
 <div class="rowdata">
-<p class="priceelement" data-producetype="fruit">Bananas: $${row["Banana Price (lb)"]} per pound</p>
-<p class="priceelement" data-producetype="fruit">Straberries: $${row["Strawberry Price (oz)"]} per ounce</p>
-<p class="priceelement" data-producetype="fruit">Apples: $${row["Apple Price (oz)"]} per ounce</p>
-<p class="priceelement" data-producetype="vegetable">Potatoes: $${row["Potato Price (lb)"]} per pound</p>
-<p class="priceelement" data-producetype="vegetable">Onions: $${row["Onion Price (lb)"]} per pound</p>
-<p class="priceelement"data-producetype="vegetable">Tomatoes: $${row["Tomato Price (lb)"]} per pound</p>
+<p class="priceelement" data-producetype="fruit" data-produce="banana">Bananas: $${row["Banana Price (lb)"]} per pound</p>
+<p class="priceelement" data-producetype="fruit" data-produce="strawberry">Straberries: $${row["Strawberry Price (oz)"]} per ounce</p>
+<p class="priceelement" data-producetype="fruit" data-produce="apple">Apples: $${row["Apple Price (oz)"]} per ounce</p>
+<p class="priceelement" data-producetype="vegetable" data-produce="potato">Potatoes: $${row["Potato Price (lb)"]} per pound</p>
+<p class="priceelement" data-producetype="vegetable" data-produce="onion">Onions: $${row["Onion Price (lb)"]} per pound</p>
+<p class="priceelement"data-producetype="vegetable" data-produce="tomato">Tomatoes: $${row["Tomato Price (lb)"]} per pound</p>
 </div></div>`
         // current_row.innerHTML=current_html
         tableElement.innerHTML+=current_html; // append the element to the table
@@ -119,12 +119,18 @@ function filter_rows(){
         }
     });
 
+    // create variables for easy filtering
+    const produce_selections = Array.from(document.querySelectorAll(".produce_selector input")).map(a=>a.checked); // get all inputs of checkboxes
+    const produce_types = ["banana","strawberry","apple","potato","onion","tomato"];
+
     // loop over every data item
-    document.querySelectorAll(".rowdata *").forEach((element) => {
+    document.querySelectorAll(".rowdata .priceelement").forEach((element) => {
         let current_producetype = element.dataset.producetype;
+        console.log(element.dataset.produce);
         
+        // hide any ones that don't match the producetype
         element.classList.remove("hidden");
-        if ((producetype === 2 && current_producetype === "vegetable") || (producetype === 3 && current_producetype === "fruit")){
+        if ((producetype === 2 && current_producetype === "vegetable") || (producetype === 3 && current_producetype === "fruit") || !produce_selections[produce_types.indexOf(element.dataset.produce)]){
             element.classList.add("hidden")
         }
     })
@@ -170,7 +176,7 @@ async function start_autocomplete(){
     document.addEventListener("click", function (e) {
         autocomplete_container.innerHTML="";
         
-
+        // also remove the dropdown content
         if (!e.target.matches('.dropdownbutton')) {
             var dropdowns = document.getElementsByClassName("dropdown-content");
             var i;
@@ -189,11 +195,30 @@ function toggle_dropdown(){
     document.getElementById("dropdown-content").classList.toggle("show");
 }
 
+const fruit_selector = document.getElementById("fruit_selector");
+const vegetable_selector = document.getElementById("vegetable_selector");
+
 function update_dropdown(number){
     producetype=parseInt(number); // convert to integer
 
     // change the text of the drop down button to match whatever the user chose
     document.getElementById("dropdownbutton").innerText = ["","All Produce","Fruit only","Vegetable only"][producetype];
+
+    // make all checkboxes checked
+    document.querySelectorAll(".produce_selector input").forEach((input) => {
+        input.checked=true;
+    })
+
+    if (producetype === 1){
+        fruit_selector.classList.remove("show");
+        vegetable_selector.classList.remove("show");
+    } else if (producetype === 2){
+        fruit_selector.classList.add("show");
+        vegetable_selector.classList.remove("show");
+    } else if (producetype === 3){
+        fruit_selector.classList.remove("show");
+        vegetable_selector.classList.add("show");
+    }
 
     // refilter the rows for instant effect
     filter_rows();

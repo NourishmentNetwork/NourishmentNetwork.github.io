@@ -203,3 +203,15 @@ body, html{
     z-index: 1;
     border-bottom: 2px solid #8BC53F;
 }
+
+.select {
+    float: right;
+}
+
+.produce_selector {
+    display: none;
+}
+
+.produce_selector.show {
+    display: block;
+}
