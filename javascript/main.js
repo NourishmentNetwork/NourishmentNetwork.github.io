@@ -37,12 +37,12 @@ async function load_table(){
         // use an html template, and fill in the costs and other data
         let current_html = `<div class="row" data-full="${btoa(JSON.stringify(row))}"><h3>${row["Store Name"]}</h3> 
 <div class="rowdata">
-<p class="priceelement">Bananas: $${row["Banana Price (lb)"]} per pound</p>
-<p class="priceelement">Straberries: $${row["Strawberry Price (oz)"]} per ounce</p>
-<p class="priceelement">Apples: $${row["Apple Price (oz)"]} per ounce</p>
-<p class="priceelement">Potatoes: $${row["Potato Price (lb)"]} per pound</p>
-<p class="priceelement">Onions: $${row["Onion Price (lb)"]} per pound</p>
-<p class="priceelement">Tomatoes: $${row["Tomato Price (lb)"]} per pound</p>
+<p class="priceelement" data-producetype="fruit">Bananas: $${row["Banana Price (lb)"]} per pound</p>
+<p class="priceelement" data-producetype="fruit">Straberries: $${row["Strawberry Price (oz)"]} per ounce</p>
+<p class="priceelement" data-producetype="fruit">Apples: $${row["Apple Price (oz)"]} per ounce</p>
+<p class="priceelement" data-producetype="vegetable">Potatoes: $${row["Potato Price (lb)"]} per pound</p>
+<p class="priceelement" data-producetype="vegetable">Onions: $${row["Onion Price (lb)"]} per pound</p>
+<p class="priceelement"data-producetype="vegetable">Tomatoes: $${row["Tomato Price (lb)"]} per pound</p>
 </div></div>`
         // current_row.innerHTML=current_html
         tableElement.innerHTML+=current_html; // append the element to the table
@@ -62,6 +62,11 @@ async function load_table(){
 }
 
 load_table(); // run the function
+
+// 1 is all
+// 2 is fruits only
+// 3 is vegetables only
+var producetype=1;
 
 // function that hides and shows rows based on what the user inputs
 function filter_rows(){
@@ -94,7 +99,7 @@ function filter_rows(){
         // get the data of the current row
         let row_data = JSON.parse(atob(row.dataset.full));
         
-        // filter out the costs
+        // filter out based on inputs
         let invalid = (parseFloat(row_data["Banana Price (lb)"]) > prices[0]) ||  // check each price against what the user entered
                         (parseFloat(row_data["Strawberry Price (oz)"]) > prices[1]) ||
                         (parseFloat(row_data["Apple Price (oz)"]) > prices[2]) ||
@@ -109,6 +114,16 @@ function filter_rows(){
         } else {
             // unhide rows that do match
             row.classList.remove("hidden");
+        }
+    });
+
+    // loop over every data item
+    document.querySelectorAll(".rowdata *").forEach((element) => {
+        let current_producetype = element.dataset.producetype;
+        
+        element.classList.remove("hidden");
+        if ((producetype === 2 && current_producetype === "vegetable") || (producetype === 3 && current_producetype === "fruit")){
+            element.classList.add("hidden")
         }
     })
 }
@@ -151,5 +166,32 @@ async function start_autocomplete(){
     // if the user clicks away then remove the autocomplete
     document.addEventListener("click", function (e) {
         autocomplete_container.innerHTML="";
+        
+
+        if (!e.target.matches('.dropdownbutton')) {
+            var dropdowns = document.getElementsByClassName("dropdown-content");
+            var i;
+            for (i = 0; i < dropdowns.length; i++) {
+                var openDropdown = dropdowns[i];
+                if (openDropdown.classList.contains('show')) {
+                    openDropdown.classList.remove('show');
+                }
+            }
+        }
     });
+}
+
+function toggle_dropdown(){
+    // open and close the dropdown menu
+    document.getElementById("dropdown-content").classList.toggle("show");
+}
+
+function update_dropdown(number){
+    producetype=parseInt(number); // convert to integer
+
+    // change the text of the drop down button to match whatever the user chose
+    document.getElementById("dropdownbutton").innerText = ["","All Produce","Fruit only","Vegetable only"][producetype];
+
+    // refilter the rows for instant effect
+    filter_rows();
 }

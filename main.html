@@ -11,34 +11,45 @@
     <p>Each of the rows with the prices are scrollable horizontally.</p>
     <p>To filter for your data, press the APPLY FILTER button</p>
     <p>Other links:<br><a href="https://linktr.ee/Nourishment.Network">https://linktr.ee/Nourishment.Network</a></p>
-    <!-- <p>Disclaimer: prices may not be completely up to date</p> -->
+    <p>View options</p>
+    <div class="dropdown">
+        <button id="dropdownbutton" class="dropdownbutton" onclick="toggle_dropdown()">All Produce</button>
+        <div id="dropdown-content" class="dropdown-content">
+            <a href="javascript:update_dropdown(1)">All Produce</a>
+            <a href="javascript:update_dropdown(2)">Fruit only</a>
+            <a href="javascript:update_dropdown(3)">Vegetable only</a>
+        </div>
+    </div>
     <div id="table">
         <div class="row search">
+            <!--This is the row containing all of the search bars-->
+            <!--Store name search-->
             <label for="storenamesearch"><h3>Store Name</h3></label>
             <input name="storenamesearch" id="storenamesearch" type="text">
             <div id="autocomplete_menu" class="autocomplete"></div>
             <div class="rowdata">
-                <div class="priceelement">
+                <!--Search bars for each item-->
+                <div class="priceelement" data-producetype="fruit">
                     <label for="bananacost" class="pricetextbox_label">Max cost for bananas</label>
                     <input name="bananacost" id="bananacost" class="pricetextbox">
                 </div>
-                <div class="priceelement">
+                <div class="priceelement" data-producetype="fruit">
                     <label for="strawberrycost" class="pricetextbox_label">Max cost for strawberries</label>
                     <input name="strawberrycost" id="strawberrycost" class="pricetextbox">
                 </div>
-                <div class="priceelement">
+                <div class="priceelement" data-producetype="fruit">
                     <label for="applecost" class="pricetextbox_label">Max cost for apples</label>
                     <input name="applecost" id="applecost" class="pricetextbox">
                 </div>
-                <div class="priceelement">
+                <div class="priceelement" data-producetype="vegetable">
                     <label for="potatocost" class="pricetextbox_label">Max cost for potatoes</label>
                     <input name="potatocost" id="potatocost" class="pricetextbox">
                 </div>
-                <div class="priceelement">
+                <div class="priceelement" data-producetype="vegetable">
                     <label for="onioncost" class="pricetextbox_label">Max cost for onions</label>
                     <input name="onioncost" id="onioncost" class="pricetextbox">
                 </div>
-                <div class="priceelement">
+                <div class="priceelement" data-producetype="vegetable">
                     <label for="tomatocost" class="pricetextbox_label">Max cost for potatoes</label>
                     <input name="tomatocost" id="tomatocost" class="pricetextbox">
                 </div>
