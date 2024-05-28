@@ -8,15 +8,10 @@
     <link rel="icon" type="image/x-icon" href="images/logo.webp">
 </head>
 <body>
-    <div id="header"><img src="images/logo.webp"></div>
-    <p>This website is built for use on mobile devices</p>
-    <p>Each of the rows with the prices are scrollable horizontally.</p>
-    <p>To filter for your data, press the APPLY FILTER button</p>
-    <p>Other links:<br><a href="https://linktr.ee/Nourishment.Network">https://linktr.ee/Nourishment.Network</a></p>
     <div id="slider-container"><label class="switch">
-        <input type="checkbox" id="slide-sync" checked>
+        <input type="checkbox" id="slide-sync" name="slide-sync" checked>
         <span class="slider round"></span>
-    </label><p>Synchronize row scrolling</p></div>
+    </label><label for="slide-sync"><p>Synchronize row scrolling</p></label></div>
     <div id="produce_selection">
         <div id="stickydropdown"><p>View options</p>
         <div class="dropdown">
@@ -84,53 +79,53 @@
         </div>
         <div class="row search" id="sort-row">
             <label class="switch">
-                <input type="checkbox" id="slide-sync" checked>
+                <input type="checkbox" name="sort-name" id="sort-name" checked>
                 <span class="slider round"></span>
             </label>
-            <h3>Sort by store name</h3>
+            <label for="sort-name"><h3>Sort by store name</h3></label>
             <div class="rowdata">
                 <!--Search bars for each item-->
                 <div class="priceelement sort" data-producetype="fruit" data-produce="banana">
                     <label class="switch">
-                        <input type="checkbox" id="slide-sync">
+                        <input type="checkbox" name="sort-banana" id="sort-banana">
                         <span class="slider round"></span>
                     </label>
-                    <p>Sort by banana price</p>
+                    <label for="sort-banana"><p>Sort by banana price</p></label>
                 </div>
                 <div class="priceelement sort" data-producetype="fruit" data-produce="strawberry">
                     <label class="switch">
-                        <input type="checkbox" id="slide-sync">
+                        <input type="checkbox" name="sort-strawberry" id="sort-strawberry">
                         <span class="slider round"></span>
                     </label>
-                    <p>Sort by strawberry price</p>
+                    <label for="sort-strawberry"><p>Sort by strawberry price</p></label>
                 </div>
                 <div class="priceelement sort" data-producetype="fruit" data-produce="apple">
                     <label class="switch">
-                        <input type="checkbox" id="slide-sync">
+                        <input type="checkbox" name="sort-apple" id="sort-apple">
                         <span class="slider round"></span>
                     </label>
-                    <p>Sort by apple price</p>
+                    <label for="sort-apple"><p>Sort by apple price</p></label>
                 </div>
                 <div class="priceelement sort" data-producetype="vegetable" data-produce="potato">
                     <label class="switch">
-                        <input type="checkbox" id="slide-sync">
+                        <input type="checkbox" name="sort-potato" id="sort-potato">
                         <span class="slider round"></span>
                     </label>
-                    <p>Sort by potato price</p>
+                    <label for="sort-potato"><p>Sort by potato price</p></label>
                 </div>
                 <div class="priceelement sort" data-producetype="vegetable" data-produce="onion">
                     <label class="switch">
-                        <input type="checkbox" id="slide-sync">
+                        <input type="checkbox" name="sort-onion" id="sort-onion">
                         <span class="slider round"></span>
                     </label>
-                    <p>Sort by onion price</p>
+                    <label for="sort-onion"><p>Sort by onion price</p></label>
                 </div>
                 <div class="priceelement sort" data-producetype="vegetable" data-produce="tomato">
                     <label class="switch">
-                        <input type="checkbox" id="slide-sync">
+                        <input type="checkbox" name="sort-tomato" id="sort-tomato">
                         <span class="slider round"></span>
                     </label>
-                    <p>Sort by tomato price</p>
+                    <label for="sort-tomato"><p>Sort by tomato price</p></label>
                 </div>
             </div>
         </div>

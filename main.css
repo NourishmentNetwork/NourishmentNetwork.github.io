@@ -3,6 +3,7 @@
 /* Root Variables */
 :root {
     --background: #e6dbc5;
+    --line: #6a982f;
 }
 
 /* Global Styles */
@@ -52,8 +53,8 @@ body, html {
     overflow-x: scroll;
     overflow-y: hidden;
     position: relative;
-    border-top: 1px solid #8BC53F;
-    border-bottom: 1px solid #8BC53F;
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
     height: 50px;
     vertical-align: baseline;
 }
@@ -151,7 +152,7 @@ footer h3 {
 
 /* Dropdown Button */
 .dropdownbutton {
-    background-color: #34db7c;
+    background-color: #208f3e;
     color: white;
     padding: 16px;
     font-size: 16px;
@@ -221,7 +222,7 @@ footer h3 {
     top: 100px;
     background: var(--background);
     z-index: 1;
-    border-bottom: 2px solid #8BC53F;
+    border-bottom: 2px solid var(--line);
 }
 
 /* Produce Selector */
@@ -294,11 +295,11 @@ footer h3 {
 }
 
 input:checked + .slider {
-    background-color: #21f364;
+    background-color: #126c2e;
 }
 
 input:focus + .slider {
-    box-shadow: 0 0 1px #21f364;
+    box-shadow: 0 0 1px #126c2e;
 }
 
 input:checked + .slider:before {
