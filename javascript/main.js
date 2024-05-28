@@ -49,6 +49,9 @@ async function render_rows(json_obj) {
     });
     let tableend = document.createElement("div");
     tableend.innerHTML="<p>You've reached the end of the table. If results are too limited, try broadening your search.</p>";
+    if (!onmobile) {
+        tableend.innerHTML+="<p>It is detected that you are not on mobile. Although this website will work completely fine, it was designed with mobile devices in mind.</p>"
+    }
     tableElement.appendChild(tableend);
 }
 
@@ -418,7 +421,9 @@ window.mobileCheck = function() {
     return check;
 };
 
-if (!window.mobileCheck()){
+var onmobile = window.mobileCheck();
+
+if (!onmobile){
     // alert("Notice: This website is built for mobile, and it seems like you using a different device. The website will work, however the design may be off.")
     console.log("not on mobile");
 }
