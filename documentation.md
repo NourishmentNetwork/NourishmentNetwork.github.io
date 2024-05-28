@@ -11,12 +11,15 @@ As of last update, you are able to filter based on fruits and vegetables, filter
 When clicked, add the "show" class to the dropdown element. This shows it to the user. When the user selects one of the options, it will update the value in the code as well as change the button text
 
 ### Autocomplete
-When the user types in the textbox, the program loops over every store name. If the store name starts with what the user inputed (e.g. target would match if the user typed in "tar"), then add it to a div.
+When the user types in the textbox, the program loops over every store name. If the store name contains what the user inputed (e.g. target would match if the user typed in "tar") or vice versa, then add it to a div. Also, before looping, the algorithm uses the levenshtein distance to sort the list.
 
 ### Filtering
 First, loop over each textbox for price. If the value entered is valid, add it to a list. If it is invalid or empty, add an arbitrary high number. Any high number ensures that every price will be below it, making that specific filter do nothing. Then, loop over every row. Check the prices stored in the row (stored in the data-full tag), and make any row that has a price higher then what the user entered invisible. Also check if the store name contains what the user inputted for store name.
 
 Then, loop over every cell in the row. If the user selected either fruits or vegetables only, then make any cell that isn't what the user selected invisible. Also check if it matches the produce the user selected with the checkboxes
+
+### Sorting
+First, remove all of the rows. Then, figure out what parameter to sort by based on what the user entered. Use a function to sort the list of json, then re-add all of the rows.
 
 ### Loading the table
 First, the csv is downloaded with a custom python script, that saves it from google sheets and crops out unneccecary data.

@@ -203,6 +203,7 @@ async function sort_rows(){
     await render_rows(prices_json);
 
     // synchronize scrolling for each div
+    // nececary because the rows were removed
     const current_scroll = document.querySelector("#sort-row .rowdata").scrollLeft;
     const divs = document.querySelectorAll('.rowdata');
     const scroll_switch = document.getElementById("slide-sync");
