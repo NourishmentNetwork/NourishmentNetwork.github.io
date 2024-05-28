@@ -118,7 +118,7 @@ function filter_rows(){
         } else {prices.push(1000.0)} // use placeholder for empty input
     })
 
-
+    console.log("prices:");
     console.log(prices); // log the prices for debug
     
     // get all rows except the searchbar row
@@ -148,6 +148,7 @@ function filter_rows(){
     // create variables for easy filtering
     const produce_selections = Array.from(document.querySelectorAll(".produce_selector input")).map(a=>a.checked); // get all inputs of checkboxes
     const produce_types = ["banana","strawberry","apple","potato","onion","tomato"];
+    console.log("selected produce:");
     console.log(produce_selections); // log for debug
     console.log(produce_types);
 
@@ -196,7 +197,7 @@ async function sort_rows(){
     // list of what each checkbox refers to
     let sort_values = ["Store Name","Banana Price (lb)","Strawberry Price (oz)","Apple Price (oz)","Potato Price (lb)","Onion Price (lb)","Tomato Price (lb)"];
 
-    console.log(sort_values[sort_index]);
+    console.log(`Sorting by ${sort_values[sort_index]}`);
 
     prices_json = sortJson(prices_json,sort_values[sort_index]);
 
@@ -314,13 +315,10 @@ async function start_autocomplete(){
             let a_dist = levDist(a, val, true);
             let b_dist = levDist(b, val, true);
             if (a_dist > b_dist){
-                // console.log(`${a} is closer then ${b}`);
                 return 1;
             } else if (a_dist === b_dist) {
-                // console.log(`${a} is the same as ${b}`);
                 return 0;
             } else {
-                // console.log(`${a} is farther then ${b}`);
                 return -1;
             }
         }
