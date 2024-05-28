@@ -51,13 +51,15 @@ async function load_table(){
     // synchronize scrolling for each div
     const divs = document.querySelectorAll('.rowdata');
     const scroll_switch = document.getElementById("slide-sync");
-    divs.forEach(div => div.addEventListener( 'scroll', e => {
+    divs.forEach(div => div.addEventListener( 'scroll', debounce(e => {
         if (scroll_switch.checked) {
             divs.forEach(d => { // when a div is scrolled update the rest to match
                 d.scrollLeft = div.scrollLeft;
             });
         }
-    }) );
+    },10)) );
+    // debounce very slightly
+    // too long of a debounce makes it choppy
 
     await start_autocomplete();
 
@@ -144,13 +146,26 @@ function filter_rows(){
     })
 }
 
+// Function to debounce other functions
+function debounce(func, delay) {
+    let timeoutId; // create variable to store the timeout id
+    // create a function that is returned and executed after the debounce
+    return function(...args) {
+        clearTimeout(timeoutId); // clear existing timeouts
+        // set a new timeout to delay the execution of the function
+        timeoutId = setTimeout(() => {
+            func.apply(this, args); // execute the function
+        }, delay); // delay is the specified time interval
+    };
+}
+
 async function start_autocomplete(){
     var inp = document.getElementById("storenamesearch"); // Load the text input
 
     // Load the autocomplete container element
     var autocomplete_container = document.getElementById("autocomplete_menu");
 
-    inp.addEventListener("input", (e)=>{
+    inp.addEventListener("input", debounce((e)=>{
         // clear the container
         autocomplete_container.innerHTML="";
         
@@ -178,7 +193,7 @@ async function start_autocomplete(){
 
         filter_rows(); // refilter the rows
         // as you type it will automatically change
-    });
+    },250));
 
     // if the user clicks away then remove the autocomplete
     document.addEventListener("click", function (e) {
