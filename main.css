@@ -68,16 +68,17 @@ body, html {
 /* Price Element */
 .priceelement {
     height: 100%;
-    margin: auto;
 }
 
 .priceelement:not(.sort){
     padding: 15px;
     width: 360px;
+    margin: auto;
 }
 
 .priceelement.sort{
     width: 390px;
+    padding: 0;
 }
 
 .priceelement label:not(.switch) {
@@ -263,6 +264,14 @@ footer h3 {
     height: 34px;
 }
 
+.sort .switch {
+    height: 20px;
+}
+
+.sort .slider {
+    width: 50px;
+}
+
 .switch input { 
     opacity: 0;
     width: 0;
@@ -289,6 +298,18 @@ footer h3 {
     width: 26px;
     left: 4px;
     bottom: 4px;
+    background-color: white;
+    -webkit-transition: .4s;
+    transition: .4s;
+}
+
+.sort .slider:before {
+    position: absolute;
+    content: "";
+    height: 16px;
+    width: 16px;
+    left: 4px;
+    bottom: 2px;
     background-color: white;
     -webkit-transition: .4s;
     transition: .4s;
