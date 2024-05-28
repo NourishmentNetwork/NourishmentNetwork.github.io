@@ -43,18 +43,20 @@ async function load_table(){
 <p class="priceelement" data-producetype="vegetable" data-produce="potato">Potatoes: $${row["Potato Price (lb)"]} per pound</p>
 <p class="priceelement" data-producetype="vegetable" data-produce="onion">Onions: $${row["Onion Price (lb)"]} per pound</p>
 <p class="priceelement"data-producetype="vegetable" data-produce="tomato">Tomatoes: $${row["Tomato Price (lb)"]} per pound</p>
-</div></div>`
-        // current_row.innerHTML=current_html
+</div></div>`; // each row contains data for produce type (vegetable or fruit, and actual produce type)
         tableElement.innerHTML+=current_html; // append the element to the table
         store_names.push(row["Store Name"]);
     });
 
     // synchronize scrolling for each div
     const divs = document.querySelectorAll('.rowdata');
+    const scroll_switch = document.getElementById("slide-sync");
     divs.forEach(div => div.addEventListener( 'scroll', e => {
-        divs.forEach(d => { // when a div is scrolled update the rest to match
-            d.scrollLeft = div.scrollLeft;
-        });
+        if (scroll_switch.checked) {
+            divs.forEach(d => { // when a div is scrolled update the rest to match
+                d.scrollLeft = div.scrollLeft;
+            });
+        }
     }) );
 
     await start_autocomplete();
@@ -86,10 +88,12 @@ function filter_rows(){
             if (isNaN(result) || text_box.offsetParent === null){ 
                 // if the box has invalid inputs
                 // or if it is hidden (from the dropdown menu)
+                console.log("invalid input");
                 text_box.value = ""; // clear it
-                prices.push(1000.0) // no price should ever be over 1000, so it is used as a placeholder
+                prices.push(1000.0); // use placeholder for invalid input
+                // no price should ever be over 1000, so it is used as a placeholder
             } else {prices.push(result);}
-        } else {prices.push(1000.0)} // same as other 1000
+        } else {prices.push(1000.0)} // use placeholder for empty input
     })
 
 
