@@ -47,7 +47,9 @@ async function render_rows(json_obj) {
         tableElement.appendChild(item); // append the element to the table
         store_names.push(row["Store Name"]);
     });
-    store_names_created=true;
+    let tableend = document.createElement("div");
+    tableend.innerHTML="<p>You've reached the end of the table. If results are too limited, try broadening your search.</p>";
+    tableElement.appendChild(tableend);
 }
 
 var prices_json; // create global variable
@@ -169,6 +171,7 @@ function filter_rows(){
 
 // function to sort a json object
 function sortJson(jsonObj, paramName) {
+    const val = document.getElementById("storenamesearch").value;
     return jsonObj.sort((a, b) => {
         const valueA = a[paramName];
         const valueB = b[paramName];
@@ -180,8 +183,16 @@ function sortJson(jsonObj, paramName) {
             // If both values are numerical, sort numerically
             return valueA - valueB;
         } else {
-            // Otherwise, sort alphabetically
-            return String(valueA).localeCompare(String(valueB));
+            // Otherwise, sort based on distance
+            let a_dist = levDist(valueA, val, true);
+            let b_dist = levDist(valueB, val, true);
+            if (a_dist > b_dist){
+                return 1;
+            } else if (a_dist === b_dist) {
+                return 0;
+            } else {
+                return -1;
+            }
         }
     });
 }
@@ -345,6 +356,7 @@ async function start_autocomplete(){
             }
         })
 
+        sort_rows(); // re sort the rows
         filter_rows(); // refilter the rows
         // as you type it will automatically change
     },250));
