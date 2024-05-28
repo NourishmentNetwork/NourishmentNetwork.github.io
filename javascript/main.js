@@ -233,7 +233,7 @@ function debounce(func, delay) {
 // Functon for levenstein distance
 // Basically calculates how different two strings are
 // Take from https://stackoverflow.com/questions/11919065/sort-an-array-by-the-levenshtein-distance-with-best-performance-in-javascript
-var levDist = function(s, t) {
+var levDist = function(s, t, starts=false) {
     var d = []; //2d matrix
 
     // Step 1
@@ -280,6 +280,12 @@ var levDist = function(s, t) {
         }
     }
 
+    // extra step that i added
+    // raises distance if it they dont start with eachother 
+    if (!(s.toLowerCase().startsWith(t.toLowerCase()) || t.toLowerCase().startsWith(s.toLowerCase())) && starts){
+        d[n][m]+=10;
+    }
+
     // Step 7
     return d[n][m];
 }
@@ -297,8 +303,8 @@ async function start_autocomplete(){
         var val = inp.value; // get the inputted value
 
         const levCompare = (a, b) => {
-            let a_dist = levDist(a, val);
-            let b_dist = levDist(b, val);
+            let a_dist = levDist(a, val, true);
+            let b_dist = levDist(b, val, true);
             if (a_dist > b_dist){
                 // console.log(`${a} is closer then ${b}`);
                 return 1;
@@ -314,8 +320,7 @@ async function start_autocomplete(){
         let sorted_store_names = store_names.sort(levCompare);
 
         sorted_store_names.forEach(name => { // loop over every store name
-            if (name.toLowerCase().startsWith(val.toLowerCase())){ // if the store name starts with what the user entered
-                // console.log(name); // log it
+            if (val.toLowerCase().includes(name.toLowerCase()) || name.toLowerCase().includes(val.toLowerCase())){ // if the store name starts with what the user entered
 
                 // create a div to store it
                 let item = document.createElement("div");
