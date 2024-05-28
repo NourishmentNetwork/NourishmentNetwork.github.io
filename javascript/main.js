@@ -419,5 +419,6 @@ window.mobileCheck = function() {
 };
 
 if (!window.mobileCheck()){
-    alert("Notice: This website is built for mobile, and it seems like you using a different device. The website will work, however the design may be off.")
+    // alert("Notice: This website is built for mobile, and it seems like you using a different device. The website will work, however the design may be off.")
+    console.log("not on mobile");
 }
