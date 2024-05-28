@@ -62,7 +62,9 @@ async function load_table(){
     // load the json into the global variable
     prices_json = await get_csv();
 
-    await render_rows(prices_json);
+    // await render_rows(prices_json); unnececary, as sort_rows renders the rows already
+    sort_rows(); // render and sort the rows
+    filter_rows(); // filter it out just in case
 
     // synchronize scrolling for each div
     const divs = document.querySelectorAll('.rowdata');
