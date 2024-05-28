@@ -146,11 +146,8 @@ body, html{
 }
 
 #stickydropdown{
-    position:sticky;
-    top:0px;
     background: var(--background);
-    z-index: 3;
-    width: 100vw;
+    width: 60vw;
 }
 
 .dropdown {
@@ -198,15 +195,15 @@ body, html{
 .search{
     align-self: flex-start;
     position:sticky;
-    top: 83px;
+    top: 100px;
     background: var(--background);
     z-index: 1;
     border-bottom: 2px solid #8BC53F;
 }
 
-.select {
+/* .select {
     float: right;
-}
+} */
 
 .produce_selector {
     display: none;
@@ -214,4 +211,22 @@ body, html{
 
 .produce_selector.show {
     display: block;
+}
+
+.select {
+    width: 40vw;
+    background: var(--background);
+}
+
+#produce_selection {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-self: flex-start;
+    height: 100px;
+    position:sticky;
+    top:0px;
+    z-index: 3;
+    background: var(--background);
+    width: 100vw;
 }

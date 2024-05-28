@@ -122,11 +122,12 @@ function filter_rows(){
     // create variables for easy filtering
     const produce_selections = Array.from(document.querySelectorAll(".produce_selector input")).map(a=>a.checked); // get all inputs of checkboxes
     const produce_types = ["banana","strawberry","apple","potato","onion","tomato"];
+    console.log(produce_selections); // log for debug
+    console.log(produce_types);
 
     // loop over every data item
     document.querySelectorAll(".rowdata .priceelement").forEach((element) => {
         let current_producetype = element.dataset.producetype;
-        console.log(element.dataset.produce);
         
         // hide any ones that don't match the producetype
         element.classList.remove("hidden");
@@ -214,8 +215,8 @@ function update_dropdown(number){
 
     // Hide or show checkboxes based on produce type
     if (producetype === 1){ // all produce
-        fruit_selector.classList.remove("show");
-        vegetable_selector.classList.remove("show");
+        fruit_selector.classList.add("show");
+        vegetable_selector.classList.add("show");
     } else if (producetype === 2){ // fruits only
         fruit_selector.classList.add("show");
         vegetable_selector.classList.remove("show");

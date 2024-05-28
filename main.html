@@ -9,36 +9,38 @@
 </head>
 <body>
     <div id="header"><img src="images/logo.webp"></div>
+    <p>This website is built for use on mobile devices</p>
     <p>Each of the rows with the prices are scrollable horizontally.</p>
     <p>To filter for your data, press the APPLY FILTER button</p>
     <p>Other links:<br><a href="https://linktr.ee/Nourishment.Network">https://linktr.ee/Nourishment.Network</a></p>
-    <div id="stickydropdown"><p>View options</p>
-    <div class="dropdown">
-        <button id="dropdownbutton" class="dropdownbutton" onclick="toggle_dropdown()">All Produce</button>
-        <div id="dropdown-content" class="dropdown-content">
-            <a href="javascript:update_dropdown(1)" style="transition-delay: 50ms;">All Produce</a>
-            <a href="javascript:update_dropdown(2)" style="transition-delay: 100ms;">Fruit only</a>
-            <a href="javascript:update_dropdown(3)" style="transition-delay: 150ms;">Vegetable only</a>
+    <div id="produce_selection">
+        <div id="stickydropdown"><p>View options</p>
+        <div class="dropdown">
+            <button id="dropdownbutton" class="dropdownbutton" onclick="toggle_dropdown()">All Produce</button>
+            <div id="dropdown-content" class="dropdown-content">
+                <a href="javascript:update_dropdown(1)" style="transition-delay: 50ms;">All Produce</a>
+                <a href="javascript:update_dropdown(2)" style="transition-delay: 100ms;">Fruit only</a>
+                <a href="javascript:update_dropdown(3)" style="transition-delay: 150ms;">Vegetable only</a>
+            </div>
+        </div></div>
+        <div class="select">
+            <div id="fruit_selector" class="produce_selector show">
+                <input type="checkbox" name="banana" id="banana" checked>
+                <label for="banana">Banana</label><br>
+                <input type="checkbox" name="strawberry" id="strawberry" checked>
+                <label for="strawberry">Strawberry</label><br>
+                <input type="checkbox" name="apple"id="apple" checked>
+                <label for="apple">Apple</label><br>
+            </div>
+            <div id="vegetable_selector" class="produce_selector show">
+                <input type="checkbox" name="potato" id="potato" checked>
+                <label for="potato">Potato</label><br>
+                <input type="checkbox" name="onion" id="onion" checked>
+                <label for="onion">Onion</label><br>
+                <input type="checkbox" name="tomato"id="tomato" checked>
+                <label for="tomato">Tomato</label><br>
+            </div>
         </div>
-    </div>
-    <div class="select">
-        <div id="fruit_selector" class="produce_selector">
-            <input type="checkbox" name="banana" id="banana" checked>
-            <label for="banana">Banana</label><br>
-            <input type="checkbox" name="strawberry" id="strawberry" checked>
-            <label for="strawberry">Strawberry</label><br>
-            <input type="checkbox" name="apple"id="apple" checked>
-            <label for="apple">Apple</label><br>
-        </div>
-        <div id="vegetable_selector" class="produce_selector">
-            <input type="checkbox" name="potato" id="potato" checked>
-            <label for="potato">Potato</label><br>
-            <input type="checkbox" name="onion" id="onion" checked>
-            <label for="onion">Onion</label><br>
-            <input type="checkbox" name="tomato"id="tomato" checked>
-            <label for="tomato">Tomato</label><br>
-        </div>
-    </div>
     </div>
     <div id="table">
         <div class="row search">
