@@ -66,13 +66,20 @@ body, html {
 
 /* Price Element */
 .priceelement {
-    width: 360px;
     height: 100%;
     margin: auto;
-    padding: 15px;
 }
 
-.priceelement label {
+.priceelement:not(.sort){
+    padding: 15px;
+    width: 360px;
+}
+
+.priceelement.sort{
+    width: 390px;
+}
+
+.priceelement label:not(.switch) {
     width: 190px;
     border-bottom: 1px solid black;
 }
@@ -208,7 +215,7 @@ footer h3 {
 }
 
 /* Search */
-.search {
+.search:not(#sort-row) {
     align-self: flex-start;
     position: sticky;
     top: 100px;
@@ -271,6 +278,7 @@ footer h3 {
     background-color: #ccc;
     -webkit-transition: .4s;
     transition: .4s;
+    width: 60px;
 }
 
 .slider:before {

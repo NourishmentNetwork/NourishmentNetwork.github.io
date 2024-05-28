@@ -23,19 +23,19 @@ async function get_csv(){
         });
 }
 
-var prices_json; // create global variable
-
 // create empty global variable
 var store_names = [];
 
-async function load_table(){
-    // load the json into the global variable
-    prices_json = await get_csv();
-
+async function render_rows(json_obj) {
+    console.log(json_obj);
     // loop over json then add each row
-    prices_json.forEach(row => {
+    store_names=[];
+    json_obj.forEach(row => {
         // use an html template, and fill in the costs and other data
-        let current_html = `<div class="row" data-full="${btoa(JSON.stringify(row))}"><h3>${row["Store Name"]}</h3> 
+        let item = document.createElement("div");
+        item.classList.add("row"); // add proper classes
+        item.dataset.full=btoa(JSON.stringify(row));
+        item.innerHTML=`<h3>${row["Store Name"]}</h3> 
 <div class="rowdata">
 <p class="priceelement" data-producetype="fruit" data-produce="banana">Bananas: $${row["Banana Price (lb)"]} per pound</p>
 <p class="priceelement" data-producetype="fruit" data-produce="strawberry">Straberries: $${row["Strawberry Price (oz)"]} per ounce</p>
@@ -43,10 +43,21 @@ async function load_table(){
 <p class="priceelement" data-producetype="vegetable" data-produce="potato">Potatoes: $${row["Potato Price (lb)"]} per pound</p>
 <p class="priceelement" data-producetype="vegetable" data-produce="onion">Onions: $${row["Onion Price (lb)"]} per pound</p>
 <p class="priceelement"data-producetype="vegetable" data-produce="tomato">Tomatoes: $${row["Tomato Price (lb)"]} per pound</p>
-</div></div>`; // each row contains data for produce type (vegetable or fruit, and actual produce type)
-        tableElement.innerHTML+=current_html; // append the element to the table
+</div>`; // each row contains data for produce type (vegetable or fruit, and actual produce type)
+        tableElement.appendChild(item); // append the element to the table
         store_names.push(row["Store Name"]);
     });
+    store_names_created=true;
+}
+
+var prices_json; // create global variable
+
+// this function also contains loading for everything
+async function load_table(){
+    // load the json into the global variable
+    prices_json = await get_csv();
+
+    await render_rows(prices_json);
 
     // synchronize scrolling for each div
     const divs = document.querySelectorAll('.rowdata');
@@ -63,6 +74,17 @@ async function load_table(){
 
     await start_autocomplete();
 
+    // make it so checking any of the checkboxes sorts the rows
+
+    const sort_boxes = document.querySelectorAll("#sort-row input");
+
+    sort_boxes.forEach(checkbox => {
+        checkbox.addEventListener("change",e=>{
+            sort_boxes.forEach(box => {box.checked=false;});
+            e.target.checked=true;
+            sort_rows();
+        })
+    });
 }
 
 load_table(); // run the function
@@ -144,6 +166,59 @@ function filter_rows(){
             element.classList.add("hidden")
         }
     })
+}
+
+// function to sort a json object
+function sortJson(jsonObj, paramName) {
+    return jsonObj.sort((a, b) => {
+        const valueA = a[paramName];
+        const valueB = b[paramName];
+
+        // Check if the values are numerical
+        const isNumeric = (value) => !isNaN(parseFloat(value)) && isFinite(value);
+
+        if (isNumeric(valueA) && isNumeric(valueB)) {
+            // If both values are numerical, sort numerically
+            return valueA - valueB;
+        } else {
+            // Otherwise, sort alphabetically
+            return String(valueA).localeCompare(String(valueB));
+        }
+    });
+}
+
+async function sort_rows(){
+    // remove all but two rows (the two search rows)
+    Array.from(tableElement.children).slice(2).forEach(element => {element.remove();});
+
+    // long function,
+    // but all it does is return which number checkbox is selected
+    let sort_index = Array.from(document.querySelectorAll("#sort-row input")).indexOf(document.querySelector("#sort-row input:checked"));
+    
+    // list of what each checkbox refers to
+    let sort_values = ["Store Name","Banana Price (lb)","Strawberry Price (oz)","Apple Price (oz)","Potato Price (lb)","Onion Price (lb)","Tomato Price (lb)"];
+
+    console.log(sort_values[sort_index]);
+
+    prices_json = sortJson(prices_json,sort_values[sort_index]);
+
+    await render_rows(prices_json);
+
+    // synchronize scrolling for each div
+    const current_scroll = document.querySelector("#sort-row .rowdata").scrollLeft;
+    const divs = document.querySelectorAll('.rowdata');
+    const scroll_switch = document.getElementById("slide-sync");
+    divs.forEach(div => {div.addEventListener( 'scroll', debounce(e => {
+        if (scroll_switch.checked) {
+            divs.forEach(d => { // when a div is scrolled update the rest to match
+                d.scrollLeft = div.scrollLeft;
+            });
+        }
+    },10)); div.scrollLeft=current_scroll });
+    // debounce very slightly
+    // too long of a debounce makes it choppy
+
+    filter_rows();
 }
 
 // Function to debounce other functions

@@ -63,7 +63,7 @@
                     <label for="strawberrycost" class="pricetextbox_label">Max cost for strawberries</label>
                     <input name="strawberrycost" id="strawberrycost" class="pricetextbox" type="number">
                 </div>
-                <div class="priceelement" data-producetype="fruit" data-produce="onion">
+                <div class="priceelement" data-producetype="fruit" data-produce="apple">
                     <label for="applecost" class="pricetextbox_label">Max cost for apples</label>
                     <input name="applecost" id="applecost" class="pricetextbox" type="number">
                 </div>
@@ -81,6 +81,58 @@
                 </div>
             </div>
             <div id="centerbutton"><button onclick="filter_rows()" id="filterbutton">APPLY FILTER</button></div>
+        </div>
+        <div class="row search" id="sort-row">
+            <label class="switch">
+                <input type="checkbox" id="slide-sync" checked>
+                <span class="slider round"></span>
+            </label>
+            <h3>Sort by store name</h3>
+            <div class="rowdata">
+                <!--Search bars for each item-->
+                <div class="priceelement sort" data-producetype="fruit" data-produce="banana">
+                    <label class="switch">
+                        <input type="checkbox" id="slide-sync">
+                        <span class="slider round"></span>
+                    </label>
+                    <p>Sort by banana price</p>
+                </div>
+                <div class="priceelement sort" data-producetype="fruit" data-produce="strawberry">
+                    <label class="switch">
+                        <input type="checkbox" id="slide-sync">
+                        <span class="slider round"></span>
+                    </label>
+                    <p>Sort by strawberry price</p>
+                </div>
+                <div class="priceelement sort" data-producetype="fruit" data-produce="apple">
+                    <label class="switch">
+                        <input type="checkbox" id="slide-sync">
+                        <span class="slider round"></span>
+                    </label>
+                    <p>Sort by apple price</p>
+                </div>
+                <div class="priceelement sort" data-producetype="vegetable" data-produce="potato">
+                    <label class="switch">
+                        <input type="checkbox" id="slide-sync">
+                        <span class="slider round"></span>
+                    </label>
+                    <p>Sort by potato price</p>
+                </div>
+                <div class="priceelement sort" data-producetype="vegetable" data-produce="onion">
+                    <label class="switch">
+                        <input type="checkbox" id="slide-sync">
+                        <span class="slider round"></span>
+                    </label>
+                    <p>Sort by onion price</p>
+                </div>
+                <div class="priceelement sort" data-producetype="vegetable" data-produce="tomato">
+                    <label class="switch">
+                        <input type="checkbox" id="slide-sync">
+                        <span class="slider round"></span>
+                    </label>
+                    <p>Sort by tomato price</p>
+                </div>
+            </div>
         </div>
         <!--Rows are added in by javascript-->
     </div>
