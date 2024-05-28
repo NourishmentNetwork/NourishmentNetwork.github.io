@@ -64,7 +64,7 @@ async function load_table(){
 
     // await render_rows(prices_json); unnececary, as sort_rows renders the rows already
     sort_rows(); // render and sort the rows
-    filter_rows(); // filter it out just in case
+    // sort rows already has the render rows and filter rows functions
 
     // synchronize scrolling for each div
     const divs = document.querySelectorAll('.rowdata');
