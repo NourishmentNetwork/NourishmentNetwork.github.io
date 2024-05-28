@@ -289,6 +289,10 @@ var levDist = function(s, t, starts=false) {
     // Step 7
     return d[n][m];
 }
+// if you wish to understand this function better
+// https://medium.com/@ethannam/understanding-the-levenshtein-distance-equation-for-beginners-c4285a5604f0
+// https://en.wikipedia.org/wiki/Levenshtein_distance
+// otherwise the algorithm uses a matrix to figure out the amount of edits needed to change one string into the other
 
 async function start_autocomplete(){
     var inp = document.getElementById("storenamesearch"); // Load the text input
@@ -302,6 +306,9 @@ async function start_autocomplete(){
         
         var val = inp.value; // get the inputted value
 
+
+        // function to compare the levenshtein distances
+        // for sorting
         const levCompare = (a, b) => {
             let a_dist = levDist(a, val, true);
             let b_dist = levDist(b, val, true);
@@ -317,7 +324,8 @@ async function start_autocomplete(){
             }
         }
 
-        let sorted_store_names = store_names.sort(levCompare);
+        let sorted_store_names = store_names.sort(); // first sort alphabetically
+        sorted_store_names = store_names.sort(levCompare); // then sort based on levenshtein
 
         sorted_store_names.forEach(name => { // loop over every store name
             if (val.toLowerCase().includes(name.toLowerCase()) || name.toLowerCase().includes(val.toLowerCase())){ // if the store name starts with what the user entered
