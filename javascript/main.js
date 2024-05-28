@@ -178,18 +178,14 @@ async function start_autocomplete(){
 
     // if the user clicks away then remove the autocomplete
     document.addEventListener("click", function (e) {
-        autocomplete_container.innerHTML="";
+        autocomplete_container.innerHTML=""; // empty the autocomplete container
         
         // also remove the dropdown content
-        if (!e.target.matches('.dropdownbutton')) {
-            var dropdowns = document.getElementsByClassName("dropdown-content");
-            var i;
-            for (i = 0; i < dropdowns.length; i++) {
-                var openDropdown = dropdowns[i];
-                if (openDropdown.classList.contains('show')) {
-                    openDropdown.classList.remove('show');
-                }
-            }
+        if (!e.target.matches('.dropdownbutton')) { // if the dropwdown wasnt clicked
+            document.querySelectorAll(".dropdown-content").forEach(dropdown => {
+                dropdown.classList.remove('show'); // loop over all content and hide it
+            });
+            // this is a loop in case more dropdowns are added
         }
     });
 }
@@ -199,6 +195,7 @@ function toggle_dropdown(){
     document.getElementById("dropdown-content").classList.toggle("show");
 }
 
+// the divs containing the checkboxes for fruit and vegetable
 const fruit_selector = document.getElementById("fruit_selector");
 const vegetable_selector = document.getElementById("vegetable_selector");
 
