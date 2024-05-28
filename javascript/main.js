@@ -62,15 +62,13 @@ async function load_table(){
     // synchronize scrolling for each div
     const divs = document.querySelectorAll('.rowdata');
     const scroll_switch = document.getElementById("slide-sync");
-    divs.forEach(div => div.addEventListener( 'scroll', debounce(e => {
+    divs.forEach(div => div.addEventListener( 'scroll', e => {
         if (scroll_switch.checked) {
             divs.forEach(d => { // when a div is scrolled update the rest to match
                 d.scrollLeft = div.scrollLeft;
             });
         }
-    },10)) );
-    // debounce very slightly
-    // too long of a debounce makes it choppy
+    }) );
 
     await start_autocomplete();
 
@@ -208,15 +206,13 @@ async function sort_rows(){
     const current_scroll = document.querySelector("#sort-row .rowdata").scrollLeft;
     const divs = document.querySelectorAll('.rowdata');
     const scroll_switch = document.getElementById("slide-sync");
-    divs.forEach(div => {div.addEventListener( 'scroll', debounce(e => {
+    divs.forEach(div => {div.addEventListener( 'scroll', e => {
         if (scroll_switch.checked) {
             divs.forEach(d => { // when a div is scrolled update the rest to match
                 d.scrollLeft = div.scrollLeft;
             });
         }
-    },10)); div.scrollLeft=current_scroll });
-    // debounce very slightly
-    // too long of a debounce makes it choppy
+    }); div.scrollLeft=current_scroll });
 
     filter_rows();
 }
