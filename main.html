@@ -41,7 +41,8 @@
             </div>
         </div>
     </div>
-    <div id="table">
+    <div class="centerbutton"><button onclick="unhide_table();" id="continue-button">Continue</button></div>
+    <div id="table" class="hidden">
         <div class="row search">
             <!--This is the row containing all of the search bars-->
             <!--Store name search-->
@@ -75,7 +76,7 @@
                     <input name="tomatocost" id="tomatocost" class="pricetextbox" type="number">
                 </div>
             </div>
-            <div id="centerbutton"><button onclick="filter_rows()" id="filterbutton">APPLY FILTER</button></div>
+            <div class="centerbutton"><button onclick="sort_and_filter()" id="filterbutton">APPLY FILTER</button></div>
         </div>
         <div class="row search" id="sort-row">
             <label class="switch">
@@ -130,6 +131,7 @@
             </div>
         </div>
         <!--Rows are added in by javascript-->
+        <div id="notice"><p>Press APPLY FILTER to find the produce right for you</p></div>
     </div>
     
     <br>

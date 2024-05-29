@@ -126,7 +126,7 @@ async function load_table(){
     prices_json = await get_csv();
 
     // await render_rows(prices_json); unnececary, as sort_rows renders the rows already
-    sort_rows(); // render and sort the rows
+    // sort_rows(); // render and sort the rows
     // sort rows already has the render rows and filter rows functions
 
     // synchronize scrolling for each div
@@ -156,6 +156,17 @@ async function load_table(){
 }
 
 load_table(); // run the function
+
+// tracks if the user has already sorted and filtered before or not
+var first_time = true;
+
+// function to both sort and filter the rows
+function sort_and_filter(){
+    first_time=false; // update variable
+    sort_rows();
+    filter_rows();
+}
+
 
 // 1 is all
 // 2 is fruits only
@@ -223,7 +234,7 @@ function filter_rows(){
     console.log(produce_types);
 
     // loop over every data item
-    document.querySelectorAll("td .priceelement").forEach((element) => {
+    document.querySelectorAll(".priceelement").forEach((element) => {
         let current_producetype = element.dataset.producetype;
         
         // hide any ones that don't match the producetype
@@ -267,7 +278,16 @@ function sortJson(jsonObj, paramName) {
     });
 }
 
+function unhide_table(){
+    filter_rows();
+    tableElement.classList.remove("hidden");
+    document.getElementById("continue-button").remove();
+}
+
 async function sort_rows(){
+
+    if (first_time) {return}
+
     // remove all but two rows (the two search rows)
     Array.from(tableElement.children).slice(2).forEach(element => {element.remove();});
 
