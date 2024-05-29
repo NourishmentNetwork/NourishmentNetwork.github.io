@@ -27,6 +27,7 @@ async function get_csv(){
 var store_names = [];
 
 async function render_rows(json_obj) {
+    loader.classList.remove("hidden");
     console.log(json_obj);
     // loop over json then add each row
     store_names=[];
@@ -119,12 +120,16 @@ async function render_rows(json_obj) {
         tableend.innerHTML+="<p>It is detected that you are on mobile. Although it should work, this site has not been designed for mobile devices yet.</p>"
     }
     tableElement.appendChild(tableend);
+    // loader.classList.add("hidden");
 }
 
 var prices_json; // create global variable
 
+const loader = document.getElementById("loader"); // get loader element
+
 // this function also contains loading for everything
 async function load_table(){
+    loader.classList.remove("hidden");
     // load the json into the global variable
     prices_json = await get_csv();
 
@@ -159,6 +164,8 @@ async function load_table(){
             filter_rows(); // filter the rows
         })
     })
+
+    loader.classList.add("hidden");
 }
 
 load_table(); // run the function
@@ -183,6 +190,7 @@ var producetype=1;
 
 // function that hides and shows rows based on what the user inputs
 function filter_rows(){
+    loader.classList.remove("hidden");
 
     // load in the text box objects
     const price_text_boxes = document.querySelectorAll(".pricetextbox");
@@ -256,6 +264,8 @@ function filter_rows(){
             element.parentElement.classList.add("hidden");
         }
     })
+
+    loader.classList.add("hidden");
 }
 
 // function to sort a json object
@@ -298,7 +308,7 @@ function unhide_table(){
 }
 
 async function sort_rows(){
-
+    loader.classList.remove("hidden");
     if (first_time) {return}
 
     // remove all but three rows
@@ -318,6 +328,8 @@ async function sort_rows(){
     await render_rows(prices_json);
 
     filter_rows();
+
+    // loader.classList.add("hidden");
 }
 
 // Function to debounce other functions

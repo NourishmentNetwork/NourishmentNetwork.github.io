@@ -424,3 +424,36 @@ input:checked + .slider:before {
         flex-direction: column;
     }
 }
+
+#loader {
+    position: fixed;
+    z-index: 100;
+    top:0;
+    left:0;
+    width: 100vw;
+    height:100vw;
+    pointer-events: none;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+}
+
+#loader::after {
+    display: block;
+    content:"";
+    width: 75px;
+    height: 75px;
+    border: 15px solid rgba(255,255,255,0);
+    border-radius: 50%;
+    border-top: 15px solid blue;
+    animation: spin_loading 1.5s linear infinite;
+}
+
+@keyframes spin_loading {
+    from {
+        transform: rotate(0turn);
+    }
+    to {
+        transform: rotate(1turn);
+    }
+}
