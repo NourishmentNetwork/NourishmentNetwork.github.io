@@ -306,7 +306,9 @@ footer h3 {
     flex-direction: row;
     justify-content: flex-start;
     align-self: flex-start;
-    height: fit-content;
+    height: -moz-max-content;    /* Firefox/Gecko */
+    height: -webkit-max-content; /* Chrome */
+    height: intrinsic;           /* Safari/WebKit uses a non-standard name */
     padding-bottom: 20px;
     position: sticky;
     top: 0px;
