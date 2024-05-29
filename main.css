@@ -110,11 +110,11 @@ th {
     width: calc(95% - 190px);
 }
 
-td .priceelement[data-producetype="fruit"] {
+td:has([data-producetype="fruit"]) {
     background-color: #e0f7fa;
 }
 
-td .priceelement[data-producetype="vegetable"] {
+td:has([data-producetype="vegetable"]) {
     background-color: #f1f8e9;
 }
 

@@ -38,7 +38,7 @@ async function render_rows(json_obj) {
         item.innerHTML = `
 <table>
     <tr>
-        <th colspan="3"><h3>${row["Store Name"]}</h3></th>
+        <th colspan="6"><h3>${row["Store Name"]}</h3></th>
     </tr>
     <tr>
         <td>
@@ -54,6 +54,21 @@ async function render_rows(json_obj) {
         <td>
             <div class="priceelement" data-producetype="fruit" data-produce="apple">
                 Apples: $ per ounce
+            </div>
+        </td>
+        <td>
+            <div class="priceelement" data-producetype="vegetable" data-produce="potato">
+                Potatoes: $ per pound
+            </div>
+        </td>
+        <td>
+            <div class="priceelement" data-producetype="vegetable" data-produce="onion">
+                Onions: $ per pound
+            </div>
+        </td>
+        <td>
+            <div class="priceelement" data-producetype="vegetable" data-produce="tomato">
+                Tomatoes: $ per pound
             </div>
         </td>
     </tr>
@@ -73,25 +88,6 @@ async function render_rows(json_obj) {
                 $${row["Apple Price (oz)"]}
             </div>
         </td>
-    </tr>
-    <tr>
-        <td>
-            <div class="priceelement" data-producetype="vegetable" data-produce="potato">
-                Potatoes: $ per pound
-            </div>
-        </td>
-        <td>
-            <div class="priceelement" data-producetype="vegetable" data-produce="onion">
-                Onions: $ per pound
-            </div>
-        </td>
-        <td>
-            <div class="priceelement" data-producetype="vegetable" data-produce="tomato">
-                Tomatoes: $ per pound
-            </div>
-        </td>
-    </tr>
-    <tr>
         <td>
             <div class="priceelement" data-producetype="vegetable" data-produce="potato">
                 $${row["Potato Price (lb)"]}
@@ -231,11 +227,13 @@ function filter_rows(){
         
         // hide any ones that don't match the producetype
         element.classList.remove("hidden");
+        element.parentElement.classList.remove("hidden");
         // if fruits only is selected and the produce type is vegetable
         // or if vegetables only and the produce type is fruit
         // or if it is not selected by the user
         if ((producetype === 2 && current_producetype === "vegetable") || (producetype === 3 && current_producetype === "fruit") || !produce_selections[produce_types.indexOf(element.dataset.produce)]){
-            element.classList.add("hidden")
+            element.classList.add("hidden");
+            element.parentElement.classList.add("hidden");
         }
     })
 }
