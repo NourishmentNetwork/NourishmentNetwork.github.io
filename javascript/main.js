@@ -23,6 +23,19 @@ async function get_csv(){
         });
 }
 
+// random number between min and max
+function randint(min, max, skewFactor = 0.75) {
+    // Generate a random number between 0 and 1
+    let rnd = Math.random();
+    
+    // Apply skew: skewFactor = 0.75 will favor values around 75% of the way between min and max
+    // Adjust the formula to ensure correct weighting
+    rnd = Math.pow(rnd, 1 / skewFactor);
+    
+    // Scale the skewed random number to the desired range
+    return min + (max - min) * rnd;
+}
+
 // create empty global variable
 var store_names = [];
 
@@ -104,6 +117,70 @@ async function render_rows(json_obj) {
         <td>
             <div class="priceelement" data-producetype="vegetable" data-produce="tomato">
                 $${row["Tomato Price (lb)"]}
+            </div>
+        </td>
+    </tr>
+    <tr class="topborder">
+        <td>
+            <div class="priceelement" data-producetype="fruit" data-produce="banana">
+                Quantity: ${Math.ceil(randint(15,105))}
+            </div>
+        </td>
+        <td>
+            <div class="priceelement" data-producetype="fruit" data-produce="strawberry">
+                Quantity: ${Math.ceil(randint(15,105))}
+            </div>
+        </td>
+        <td>
+            <div class="priceelement" data-producetype="fruit" data-produce="apple">
+                Quantity: ${Math.ceil(randint(15,105))}
+            </div>
+        </td>
+        <td>
+            <div class="priceelement" data-producetype="vegetable" data-produce="potato">
+                Quantity: ${Math.ceil(randint(15,105))}
+            </div>
+        </td>
+        <td>
+            <div class="priceelement" data-producetype="vegetable" data-produce="onion">
+                Quantity: ${Math.ceil(randint(15,105))}
+            </div>
+        </td>
+        <td>
+            <div class="priceelement" data-producetype="vegetable" data-produce="tomato">
+                Quantity: ${Math.ceil(randint(15,105))}
+            </div>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <div class="priceelement" data-producetype="fruit" data-produce="banana">
+                Quality: ${Math.ceil(randint(1,3)*50)/50}
+            </div>
+        </td>
+        <td>
+            <div class="priceelement" data-producetype="fruit" data-produce="strawberry">
+                Quality: ${Math.ceil(randint(1,3)*50)/50}
+            </div>
+        </td>
+        <td>
+            <div class="priceelement" data-producetype="fruit" data-produce="apple">
+                Quality: ${Math.ceil(randint(1,3)*50)/50}
+            </div>
+        </td>
+        <td>
+            <div class="priceelement" data-producetype="vegetable" data-produce="potato">
+                Quality: ${Math.ceil(randint(1,3)*50)/50}
+            </div>
+        </td>
+        <td>
+            <div class="priceelement" data-producetype="vegetable" data-produce="onion">
+                Quality: ${Math.ceil(randint(1,3)*50)/50}
+            </div>
+        </td>
+        <td>
+            <div class="priceelement" data-producetype="vegetable" data-produce="tomato">
+                Quality: ${Math.ceil(randint(1,3)*50)/50}
             </div>
         </td>
     </tr>

@@ -424,3 +424,7 @@ input:checked + .slider:before {
         flex-direction: column;
     }
 }
+
+.topborder {
+    border-top: 2px black solid;
+}
