@@ -18,12 +18,8 @@ body, html {
     font-style: normal;
 }
 
-p {
+p, label     {
     font-size: 24px;
-}
-
-p.instruction {
-    font-size: 20px;
 }
 
 h3 {
@@ -126,7 +122,12 @@ th {
 }
 
 .priceelement input {
-    width: calc(90% - 190px);
+    width: 400px;
+}
+
+input[type="checkbox"] {
+    width: 20px;
+    height: 20px;
 }
 
 td:has([data-producetype="fruit"]) {
@@ -305,7 +306,7 @@ footer h3 {
     flex-direction: row;
     justify-content: flex-start;
     align-self: flex-start;
-    height: 140px;
+    height: fit-content;
     position: sticky;
     top: 0px;
     z-index: 3;
