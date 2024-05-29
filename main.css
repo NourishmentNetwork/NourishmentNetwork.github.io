@@ -66,29 +66,58 @@ body, html {
 }
 
 /* Price Element */
-.priceelement {
-    height: 100%;
-}
-
-.priceelement:not(.sort){
-    padding: 15px;
-    width: 360px;
+table {
+    width: 100%;
+    border-collapse: collapse;
     margin: auto;
 }
 
-.priceelement.sort{
-    width: 390px;
+th, td {
+    border: 1px solid #ccc;
+    padding: 15px;
+    text-align: center;
+}
+
+th {
+    background-color: #f2f2f2;
+    font-size: 1.5em;
+}
+
+.priceelement {
+    display: inline-block;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 10px;
+}
+
+.priceelement:not(.sort) {
+    padding: 10px;
+    width: 100%;
+    margin: auto;
+}
+
+.priceelement.sort {
+    width: 100%;
     padding: 0;
 }
 
 .priceelement label:not(.switch) {
-    width: 190px;
+    width: auto;
     border-bottom: 1px solid black;
 }
 
 .priceelement input {
     width: calc(95% - 190px);
 }
+
+td .priceelement[data-producetype="fruit"] {
+    background-color: #e0f7fa;
+}
+
+td .priceelement[data-producetype="vegetable"] {
+    background-color: #f1f8e9;
+}
+
 
 /* Filter Button */
 #filterbutton {

@@ -35,15 +35,81 @@ async function render_rows(json_obj) {
         let item = document.createElement("div");
         item.classList.add("row"); // add proper classes
         item.dataset.full=btoa(JSON.stringify(row));
-        item.innerHTML=`<h3>${row["Store Name"]}</h3> 
-<div class="rowdata">
-<p class="priceelement" data-producetype="fruit" data-produce="banana">Bananas: $${row["Banana Price (lb)"]} per pound</p>
-<p class="priceelement" data-producetype="fruit" data-produce="strawberry">Straberries: $${row["Strawberry Price (oz)"]} per ounce</p>
-<p class="priceelement" data-producetype="fruit" data-produce="apple">Apples: $${row["Apple Price (oz)"]} per ounce</p>
-<p class="priceelement" data-producetype="vegetable" data-produce="potato">Potatoes: $${row["Potato Price (lb)"]} per pound</p>
-<p class="priceelement" data-producetype="vegetable" data-produce="onion">Onions: $${row["Onion Price (lb)"]} per pound</p>
-<p class="priceelement"data-producetype="vegetable" data-produce="tomato">Tomatoes: $${row["Tomato Price (lb)"]} per pound</p>
-</div>`; // each row contains data for produce type (vegetable or fruit, and actual produce type)
+        item.innerHTML = `
+<table>
+    <tr>
+        <th colspan="3"><h3>${row["Store Name"]}</h3></th>
+    </tr>
+    <tr>
+        <td>
+            <div class="priceelement" data-producetype="fruit" data-produce="banana">
+                Bananas: $ per pound
+            </div>
+        </td>
+        <td>
+            <div class="priceelement" data-producetype="fruit" data-produce="strawberry">
+                Strawberries: $ per ounce
+            </div>
+        </td>
+        <td>
+            <div class="priceelement" data-producetype="fruit" data-produce="apple">
+                Apples: $ per ounce
+            </div>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <div class="priceelement" data-producetype="fruit" data-produce="banana">
+                $${row["Banana Price (lb)"]}
+            </div>
+        </td>
+        <td>
+            <div class="priceelement" data-producetype="fruit" data-produce="strawberry">
+                $${row["Strawberry Price (oz)"]}
+            </div>
+        </td>
+        <td>
+            <div class="priceelement" data-producetype="fruit" data-produce="apple">
+                $${row["Apple Price (oz)"]}
+            </div>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <div class="priceelement" data-producetype="vegetable" data-produce="potato">
+                Potatoes: $ per pound
+            </div>
+        </td>
+        <td>
+            <div class="priceelement" data-producetype="vegetable" data-produce="onion">
+                Onions: $ per pound
+            </div>
+        </td>
+        <td>
+            <div class="priceelement" data-producetype="vegetable" data-produce="tomato">
+                Tomatoes: $ per pound
+            </div>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <div class="priceelement" data-producetype="vegetable" data-produce="potato">
+                $${row["Potato Price (lb)"]}
+            </div>
+        </td>
+        <td>
+            <div class="priceelement" data-producetype="vegetable" data-produce="onion">
+                $${row["Onion Price (lb)"]}
+            </div>
+        </td>
+        <td>
+            <div class="priceelement" data-producetype="vegetable" data-produce="tomato">
+                $${row["Tomato Price (lb)"]}
+            </div>
+        </td>
+    </tr>
+</table>`;
+ // each row contains data for produce type (vegetable or fruit, and actual produce type)
         tableElement.appendChild(item); // append the element to the table
         store_names.push(row["Store Name"]);
     });
@@ -160,7 +226,7 @@ function filter_rows(){
     console.log(produce_types);
 
     // loop over every data item
-    document.querySelectorAll(".rowdata .priceelement").forEach((element) => {
+    document.querySelectorAll("td .priceelement").forEach((element) => {
         let current_producetype = element.dataset.producetype;
         
         // hide any ones that don't match the producetype
