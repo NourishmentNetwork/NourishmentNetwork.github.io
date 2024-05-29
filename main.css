@@ -16,6 +16,7 @@ body, html {
     font-family: "Marmelad", sans-serif;
     font-weight: 400;
     font-style: normal;
+    font-size: 20px;
 }
 
 /* Header */
@@ -55,7 +56,7 @@ body, html {
     position: relative;
     border-top: 1px solid var(--line);
     border-bottom: 1px solid var(--line);
-    height: 50px;
+    height: 75px;
     vertical-align: baseline;
 }
 
@@ -79,7 +80,7 @@ th, td {
 }
 
 th {
-    background-color: #f2f2f2;
+    background-color: #fbf4b1;
     font-size: 1.5em;
 }
 
@@ -90,15 +91,14 @@ th {
     padding: 10px;
 }
 
-.priceelement:not(.sort) {
+.priceelement {
     padding: 10px;
     width: 100%;
     margin: auto;
 }
 
-.priceelement.sort {
-    width: 100%;
-    padding: 0;
+.priceelement.filters {
+    width: 450px !important;
 }
 
 .priceelement label:not(.switch) {
@@ -107,15 +107,15 @@ th {
 }
 
 .priceelement input {
-    width: calc(95% - 190px);
+    width: calc(90% - 190px);
 }
 
 td:has([data-producetype="fruit"]) {
-    background-color: #e0f7fa;
+    background-color: #ddd5df;
 }
 
 td:has([data-producetype="vegetable"]) {
-    background-color: #f1f8e9;
+    background-color: #d6e8c1;
 }
 
 
@@ -249,7 +249,7 @@ footer h3 {
 .search:not(#sort-row) {
     align-self: flex-start;
     position: sticky;
-    top: 100px;
+    top: 120px;
     background: var(--background);
     z-index: 1;
     border-bottom: 2px solid var(--line);
@@ -276,7 +276,7 @@ footer h3 {
     flex-direction: row;
     justify-content: flex-start;
     align-self: flex-start;
-    height: 100px;
+    height: 120px;
     position: sticky;
     top: 0px;
     z-index: 3;

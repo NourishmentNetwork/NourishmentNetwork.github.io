@@ -283,19 +283,6 @@ async function sort_rows(){
 
     await render_rows(prices_json);
 
-    // synchronize scrolling for each div
-    // nececary because the rows were removed
-    const current_scroll = document.querySelector("#sort-row .rowdata").scrollLeft;
-    const divs = document.querySelectorAll('.rowdata');
-    const scroll_switch = document.getElementById("slide-sync");
-    divs.forEach(div => {div.addEventListener( 'scroll', e => {
-        if (scroll_switch.checked) {
-            divs.forEach(d => { // when a div is scrolled update the rest to match
-                d.scrollLeft = div.scrollLeft;
-            });
-        }
-    }); div.scrollLeft=current_scroll });
-
     filter_rows();
 }
 
