@@ -33,6 +33,7 @@ async function render_rows(json_obj) {
     json_obj.forEach(row => {
         // use an html template, and fill in the costs and other data
         let item = document.createElement("div");
+        item.classList.add("scroll-x");
         item.classList.add("row"); // add proper classes
         item.dataset.full=btoa(JSON.stringify(row));
         item.innerHTML = `

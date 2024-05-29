@@ -410,3 +410,7 @@ input:checked + .slider:before {
     align-items: center;
     column-gap: 10px;
 }
+
+.scroll-x {
+    overflow-x: scroll;
+}
