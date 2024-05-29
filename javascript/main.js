@@ -129,16 +129,16 @@ async function load_table(){
     // sort_rows(); // render and sort the rows
     // sort rows already has the render rows and filter rows functions
 
-    // synchronize scrolling for each div
-    const divs = document.querySelectorAll('.rowdata');
-    const scroll_switch = document.getElementById("slide-sync");
-    divs.forEach(div => div.addEventListener( 'scroll', e => {
-        if (scroll_switch.checked) {
-            divs.forEach(d => { // when a div is scrolled update the rest to match
-                d.scrollLeft = div.scrollLeft;
-            });
-        }
-    }) );
+    // // synchronize scrolling for each div
+    // const divs = document.querySelectorAll('.rowdata');
+    // const scroll_switch = document.getElementById("slide-sync");
+    // divs.forEach(div => div.addEventListener( 'scroll', e => {
+    //     if (scroll_switch.checked) {
+    //         divs.forEach(d => { // when a div is scrolled update the rest to match
+    //             d.scrollLeft = div.scrollLeft;
+    //         });
+    //     }
+    // }) );
 
     await start_autocomplete();
 
@@ -162,6 +162,7 @@ var first_time = true;
 
 // function to both sort and filter the rows
 function sort_and_filter(){
+    if (first_time){document.getElementById("sort-row").classList.remove("hidden");}
     first_time=false; // update variable
     sort_rows();
     filter_rows();
@@ -288,8 +289,8 @@ async function sort_rows(){
 
     if (first_time) {return}
 
-    // remove all but two rows (the two search rows)
-    Array.from(tableElement.children).slice(2).forEach(element => {element.remove();});
+    // remove all but three rows
+    Array.from(tableElement.children).slice(3).forEach(element => {element.remove();});
 
     // long function,
     // but all it does is return which number checkbox is selected

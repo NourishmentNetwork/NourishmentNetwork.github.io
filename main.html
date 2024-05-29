@@ -8,10 +8,10 @@
     <link rel="icon" type="image/x-icon" href="images/logo.webp">
 </head>
 <body>
-    <div id="slider-container"><label class="switch">
+    <!-- <div id="slider-container"><label class="switch">
         <input type="checkbox" id="slide-sync" name="slide-sync" checked>
         <span class="slider round"></span>
-    </label><label for="slide-sync"><p>Synchronize row scrolling</p></label></div>
+    </label><label for="slide-sync"><p>Synchronize row scrolling</p></label></div> -->
     <div id="produce_selection">
         <div id="stickydropdown"><p>View options</p>
         <div class="dropdown">
@@ -76,16 +76,18 @@
                     <input name="tomatocost" id="tomatocost" class="pricetextbox" type="number">
                 </div>
             </div>
-            <div class="centerbutton"><button onclick="sort_and_filter()" id="filterbutton">APPLY FILTER</button></div>
         </div>
-        <div class="row search" id="sort-row">
-            <label class="switch">
-                <input type="checkbox" name="sort-name" id="sort-name" checked>
-                <span class="slider round"></span>
-            </label>
-            <label for="sort-name"><h3>Sort by store name</h3></label>
+        <div class="centerbutton"><button onclick="sort_and_filter()" id="filterbutton">APPLY FILTER</button></div>
+        <div class="row search hidden" id="sort-row">
             <div class="rowdata">
                 <!--Search bars for each item-->
+                <div class="priceelement sort filters nohide">
+                    <label class="switch">
+                        <input type="checkbox" name="sort-name" id="sort-name" checked>
+                        <span class="slider round"></span>
+                    </label>
+                    <label for="sort-name"><p>Sort by store name</p></label>
+                </div>
                 <div class="priceelement sort filters" data-producetype="fruit" data-produce="banana">
                     <label class="switch">
                         <input type="checkbox" name="sort-banana" id="sort-banana">

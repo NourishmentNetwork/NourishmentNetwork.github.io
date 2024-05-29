@@ -50,6 +50,10 @@ hr {
     margin-top: 20px;
 }
 
+.row {
+    width: 100vw;
+}
+
 .row h3 {
     display: inline;
     color: #73A635;
@@ -61,19 +65,18 @@ hr {
 }
 
 .row .rowdata {
-    width: 100vw;
+    /* width: 100vw; */
     white-space: nowrap;
-    overflow-x: scroll;
-    overflow-y: hidden;
+    /* overflow-x: scroll; */
+    /* overflow-y: hidden; */
     position: relative;
     border-top: 1px solid var(--line);
     border-bottom: 1px solid var(--line);
-    height: 75px;
-    vertical-align: baseline;
+    /* height: 75px; */
 }
 
 .row .rowdata * {
-    display: inline-block;
+    display: block;
     white-space: nowrap;
     float: none;
 }
@@ -100,22 +103,20 @@ th {
     display: inline-block;
     width: 100%;
     box-sizing: border-box;
+    /* padding: 10px; */
+    /* margin: auto; */
+}
+
+.rowdata.search .priceelement {
     padding: 10px;
 }
 
-.priceelement {
-    padding: 10px;
-    width: 100%;
-    margin: auto;
-}
-
-.priceelement.filters {
+.priceelement.filters:not(.sort) {
     width: 450px !important;
 }
 
-.priceelement label:not(.switch) {
+.priceelement label {
     width: auto;
-    border-bottom: 1px solid black;
 }
 
 .priceelement input {
@@ -147,7 +148,7 @@ td:has([data-producetype="vegetable"]) {
 }
 
 /* Hidden Class */
-.hidden {
+.hidden:not(.rowdata,.nohide) {
     display: none !important;
 }
 
@@ -172,6 +173,7 @@ footer h3 {
     margin-top: 10px;
     display: flex;
     justify-content: center;
+    width: 100vw;
 }
 
 #continue-button {
@@ -269,8 +271,8 @@ footer h3 {
 /* Search */
 .search:not(#sort-row) {
     align-self: flex-start;
-    position: sticky;
-    top: 120px;
+    /* position: sticky; */
+    /* top: 120px; */
     background: var(--background);
     z-index: 1;
     border-bottom: 2px solid var(--line);
@@ -316,6 +318,13 @@ footer h3 {
 
 .sort .switch {
     height: 20px;
+}
+
+.sort {
+    display: flex !important;
+    flex-direction: row;
+    column-gap: 50px;
+    align-items: center;
 }
 
 .sort .slider {
