@@ -273,6 +273,7 @@ function sortJson(jsonObj, paramName) {
             return valueA - valueB;
         } else {
             if (val === ""){
+                // sort alphabetically if no store name inputted
                 return valueA.localeCompare(valueB);
             } else {
                 // Otherwise, sort based on distance
