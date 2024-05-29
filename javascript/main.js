@@ -36,6 +36,8 @@ async function render_rows(json_obj) {
         item.classList.add("scroll-x");
         item.classList.add("row"); // add proper classes
         item.dataset.full=btoa(JSON.stringify(row));
+        // fill out this template for a table
+        // two rows, first row has labels and second row has costs
         item.innerHTML = `
 <table>
     <tr>
@@ -113,7 +115,7 @@ async function render_rows(json_obj) {
     });
     let tableend = document.createElement("div");
     tableend.innerHTML="<p>You've reached the end of the table. If results are too limited, try broadening your search.</p>";
-    if (onmobile) {
+    if (onmobile) { // add warning if on mobile
         tableend.innerHTML+="<p>It is detected that you are on mobile. Although it should work, this site has not been designed for mobile devices yet.</p>"
     }
     tableElement.appendChild(tableend);
@@ -125,10 +127,6 @@ var prices_json; // create global variable
 async function load_table(){
     // load the json into the global variable
     prices_json = await get_csv();
-
-    // await render_rows(prices_json); unnececary, as sort_rows renders the rows already
-    // sort_rows(); // render and sort the rows
-    // sort rows already has the render rows and filter rows functions
 
     // // synchronize scrolling for each div
     // const divs = document.querySelectorAll('.rowdata');
