@@ -19,11 +19,15 @@ body, html {
 }
 
 p {
+    font-size: 24px;
+}
+
+p.instruction {
     font-size: 20px;
 }
 
 h3 {
-    font-size: 24px;
+    font-size: 28px;
 }
 
 /* Header */
@@ -73,6 +77,8 @@ hr {
     border-top: 1px solid var(--line);
     border-bottom: 1px solid var(--line);
     /* height: 75px; */
+    display: flex;
+    column-gap: 50px;
 }
 
 .row .rowdata * {
@@ -299,7 +305,7 @@ footer h3 {
     flex-direction: row;
     justify-content: flex-start;
     align-self: flex-start;
-    height: 120px;
+    height: 140px;
     position: sticky;
     top: 0px;
     z-index: 3;

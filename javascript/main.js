@@ -163,6 +163,7 @@ var first_time = true;
 // function to both sort and filter the rows
 function sort_and_filter(){
     if (first_time){document.getElementById("sort-row").classList.remove("hidden");}
+    document.querySelectorAll(".instruction").forEach(e=>{e.remove()});
     first_time=false; // update variable
     sort_rows();
     filter_rows();
