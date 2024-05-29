@@ -414,3 +414,9 @@ input:checked + .slider:before {
 .scroll-x {
     overflow-x: scroll;
 }
+
+@media (max-width:510px){
+    .row .rowdata{
+        flex-direction: column;
+    }
+}
