@@ -9,8 +9,8 @@ url="https://docs.google.com/spreadsheets/d/1o3FfjUsO-oksVLs92WX721G2GCswa2Qdu8W
 c = pd.read_csv(url)
 print(c)
 
-# use negative indexing to remove last row (average)
-c = c[:-1]
+# use negative indexing to remove last two rows (average and stdev)
+c = c[:-2]
 print(c)
 
 # same thing, but remove last two columns (unececary data)
