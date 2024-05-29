@@ -46,32 +46,32 @@ async function render_rows(json_obj) {
     <tr>
         <td>
             <div class="priceelement" data-producetype="fruit" data-produce="banana">
-                Bananas: $ per pound
+                Banana (per pound)
             </div>
         </td>
         <td>
             <div class="priceelement" data-producetype="fruit" data-produce="strawberry">
-                Strawberries: $ per ounce
+                Strawberry (per ounce)
             </div>
         </td>
         <td>
             <div class="priceelement" data-producetype="fruit" data-produce="apple">
-                Apples: $ per ounce
+                Apple (per ounce)
             </div>
         </td>
         <td>
             <div class="priceelement" data-producetype="vegetable" data-produce="potato">
-                Potatoes: $ per pound
+                Potato (per pound)
             </div>
         </td>
         <td>
             <div class="priceelement" data-producetype="vegetable" data-produce="onion">
-                Onions: $ per pound
+                Onions (per pound)
             </div>
         </td>
         <td>
             <div class="priceelement" data-producetype="vegetable" data-produce="tomato">
-                Tomatoes: $ per pound
+                Tomatoes (per pound)
             </div>
         </td>
     </tr>

@@ -51,7 +51,7 @@ hr {
 }
 
 .row {
-    width: 100vw;
+    width: 95vw;
 }
 
 .row h3 {
@@ -165,7 +165,7 @@ footer {
     bottom: 0;
     /* height: 120px; */
     /* background: #E1F4CB; */
-    width: 100vw;
+    width: 95vw;
     left: 0;
     padding-left: 10px;
     border-top: 1px solid #4b6b20;
@@ -180,7 +180,7 @@ footer h3 {
     margin-top: 10px;
     display: flex;
     justify-content: center;
-    width: 100vw;
+    width: 95vw;
 }
 
 #continue-button {
@@ -307,11 +307,12 @@ footer h3 {
     justify-content: flex-start;
     align-self: flex-start;
     height: fit-content;
+    padding-bottom: 20px;
     position: sticky;
     top: 0px;
     z-index: 3;
     background: var(--background);
-    width: 100vw;
+    width: 95vw;
 }
 
 /* Toggle Switch */
