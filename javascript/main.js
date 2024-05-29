@@ -140,7 +140,7 @@ async function load_table(){
     //     }
     // }) );
 
-    await start_autocomplete();
+    start_autocomplete();
 
     // make it so checking any of the checkboxes sorts the rows
 
@@ -385,7 +385,7 @@ var levDist = function(s, t, starts=false) {
 // https://en.wikipedia.org/wiki/Levenshtein_distance
 // otherwise the algorithm uses a matrix to figure out the amount of edits needed to change one string into the other
 
-async function start_autocomplete(){
+function start_autocomplete(){
     var inp = document.getElementById("storenamesearch"); // Load the text input
 
     // Load the autocomplete container element
