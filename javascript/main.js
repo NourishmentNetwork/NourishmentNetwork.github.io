@@ -272,15 +272,19 @@ function sortJson(jsonObj, paramName) {
             // If both values are numerical, sort numerically
             return valueA - valueB;
         } else {
-            // Otherwise, sort based on distance
-            let a_dist = levDist(valueA, val, true);
-            let b_dist = levDist(valueB, val, true);
-            if (a_dist > b_dist){
-                return 1;
-            } else if (a_dist === b_dist) {
-                return 0;
+            if (val === ""){
+                return valueA.localeCompare(valueB);
             } else {
-                return -1;
+                // Otherwise, sort based on distance
+                let a_dist = levDist(valueA, val, true);
+                let b_dist = levDist(valueB, val, true);
+                if (a_dist > b_dist){
+                    return 1;
+                } else if (a_dist === b_dist) {
+                    return 0;
+                } else {
+                    return -1;
+                }
             }
         }
     });
