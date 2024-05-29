@@ -111,8 +111,8 @@ async function render_rows(json_obj) {
     });
     let tableend = document.createElement("div");
     tableend.innerHTML="<p>You've reached the end of the table. If results are too limited, try broadening your search.</p>";
-    if (!onmobile) {
-        tableend.innerHTML+="<p>It is detected that you are not on mobile. Although this website will work completely fine, it was designed with mobile devices in mind.</p>"
+    if (onmobile) {
+        tableend.innerHTML+="<p>It is detected that you are on mobile. Although it should work, this site has not been designed for mobile devices yet.</p>"
     }
     tableElement.appendChild(tableend);
 }
