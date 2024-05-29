@@ -152,6 +152,13 @@ async function load_table(){
             sort_rows();
         })
     });
+
+    // make checking off produce have an instant effect
+    document.querySelectorAll(".produce_selector input").forEach(checkbox => { // for each checkbox
+        checkbox.addEventListener("change",e => { // listen for when it is toggled
+            filter_rows(); // filter the rows
+        })
+    })
 }
 
 load_table(); // run the function
