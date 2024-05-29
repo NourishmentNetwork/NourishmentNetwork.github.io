@@ -42,7 +42,12 @@ h3 {
 #table {
     display: flex;
     flex-direction: column;
-    row-gap: 2vh;
+    row-gap: 10px;
+}
+
+hr {
+    border-bottom: 1px solid #d5d5d5;
+    margin-top: 20px;
 }
 
 .row h3 {

@@ -104,7 +104,8 @@ async function render_rows(json_obj) {
             </div>
         </td>
     </tr>
-</table>`;
+</table>
+<hr>`;
  // each row contains data for produce type (vegetable or fruit, and actual produce type)
         tableElement.appendChild(item); // append the element to the table
         store_names.push(row["Store Name"]);
