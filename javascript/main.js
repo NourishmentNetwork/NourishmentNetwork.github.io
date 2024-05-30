@@ -591,3 +591,10 @@ if (!onmobile){
     // alert("Notice: This website is built for mobile, and it seems like you using a different device. The website will work, however the design may be off.")
     console.log("not on mobile");
 }
+
+// how to compress:
+// 1st take the html template for the rows and manually remove the line breaks and indents so it is one line
+// then paste it into main.min.js
+// then run this command
+// uglifyjs javascript/main.min.js --mangle --compress drop_console=true --compress  unsafe=true --mangle-props
+// make sure uglifyjs is installed
