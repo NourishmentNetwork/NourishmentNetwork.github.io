@@ -1,0 +1,12 @@
+{
+    "compress": {
+        "passes": 3,
+        "reduce_funcs": true,
+        "reduce_vars": true,
+        "drop_console": true
+    },
+    "mangle": {
+        "reserved": ["unhide_table","sort_and_filter","toggle_dropdown","update_dropdown"],
+        "toplevel": "true"
+    }
+}   
