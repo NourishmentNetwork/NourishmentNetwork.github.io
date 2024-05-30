@@ -596,5 +596,5 @@ if (!onmobile){
 // 1st take the html template for the rows and manually remove the line breaks and indents so it is one line
 // then paste it into main.min.js
 // then run this command
-// uglifyjs javascript/main.min.js --mangle --compress drop_console=true --compress  unsafe=true --mangle-props
+//     uglifyjs javascript/main.min.js --mangle --compress drop_console=true --compress  unsafe=true --mangle-props
 // make sure uglifyjs is installed
